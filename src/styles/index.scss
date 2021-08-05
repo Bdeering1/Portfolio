@@ -1,0 +1,57 @@
+@import '_theme';
+@import 'banner';
+@import 'about';
+@import 'projects';
+
+@font-face {
+    font-family: 'Newake';
+    src: url('../assets/fonts/newake.woff2') format('woff2'),
+            url('../assets/fonts/newake.woff') format('woff');
+            font-display: swap;
+}
+
+
+:root {
+    --inner-height: calc(100vh - calc(100vh - 100%));
+}
+
+*,
+*::before,
+*::after {
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+html {
+    height: var(--inner-height);
+    background-color: #FAFAFA;
+}
+body {
+    height: 100%;
+    margin: 0;
+}
+#___gatsby {
+    height: 100%;
+}
+#gatsby-focus-wrapper {
+    height: 100%;
+}
+main {
+    height: 100%;
+    font-family: 'Newake', 'Arial', 'sans-serif';
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #130330;
+    }
+}
+
+
+/* .scroll-1 {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+section {
+    scroll-snap-align: start;
+} */

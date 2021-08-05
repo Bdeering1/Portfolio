@@ -1,0 +1,145 @@
+.projects {
+    height: 100%;
+}
+
+.project-wrapper {
+    height: 100%;
+    max-width: 1440px;
+    margin: auto;
+    display: grid;
+    grid-template: repeat(7, 1fr) / repeat(7, 1fr);
+    grid-gap: 20px;
+}
+
+.project-card {
+    grid-area: 2/2/7/7;
+    background-color: transparent;
+    perspective: 1000px;
+    border: none;
+    padding: 0;
+
+    .project-card-inner {
+        width: 100%;
+        height: 100%;
+        //position: relative;
+        /* display: grid;
+        grid-template: repeat(10, 1fr) / repeat(10, 1fr); */
+        box-shadow: -10px 20px 4px $clr-shadow;
+        background-color: $clr-primary;
+        will-change: transform;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+
+
+        .project-card-front, .project-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+            //-webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+        }
+        .project-card-back {
+            transform: rotateY(180deg);
+        }
+
+        .project-title {
+            grid-area: 2/2/4/10;
+            align-self: center;
+            justify-self: center;
+            font-size: 120px;
+            letter-spacing: 0.05em;
+            color: $clr-light;
+        }
+
+        .divider {
+            grid-area: 4/2/5/10;
+            align-self: end;
+            width: auto;
+            height: 4px;
+            transform: translateY(-10px);
+            background-color: $clr-light;
+        }
+
+        .img-wrapper {
+            grid-area: 6/2/10/10;
+            width: auto;
+            height: calc(100% + 20px);
+            transform: translateY(-20px);
+            background-color: $clr-light;
+        }
+
+        .text-box {
+            grid-area: 6/2/10/10;
+            display: grid;
+            grid-template: repeat(4, 1fr) / repeat(8, 1fr);
+
+            .text-bg {
+                grid-area: 1/1/9/9;
+                width: 100%;
+                height: calc(100% + 20px);
+                transform: translateY(-20px);
+                background-color: $clr-light;
+            }
+
+            .project-subtitle {
+                grid-area: 1/1/2/9;
+                align-self: center;
+                text-align: center;
+                //transform: translateY(5px);
+                font-size: 36px;
+                color: $clr-dark;
+                z-index: 1; //why is this needed??
+            }
+
+            .sub-divider {
+                grid-area: 2/2/3/8;
+                width: calc(100% + 20px);
+                height: 2px;
+                transform: translate(-10px, 10px);
+                background-color: $clr-dark;
+            }
+
+            .project-desc {
+                grid-area: 3/2/5/8;
+                color: $clr-dark;
+                z-index: 1;
+            }
+        }
+    }
+
+    &[data-flipped  = true] .project-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .project-card {
+        .project-title {
+            color: $clr-dark;
+        }
+        .divider {
+            background-color: $clr-dark;
+        }
+        .img-wrapper {
+            background-color: $clr-dark;
+        }
+        .text-box {
+            background-color: $clr-dark;
+            .text-bg {
+                background-color: $clr-dark;
+            }
+            .project-subtitle {
+                color: $clr-font-dark;
+            }
+            .sub-divider {
+                background-color: $clr-font-dark;
+            }
+            .project-desc {
+                color: $clr-font-dark;
+            }
+        }
+    }
+}

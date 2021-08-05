@@ -1,0 +1,48 @@
+.banner {
+    height: 100%;
+    background-color: $clr-primary;
+
+    .svg-wrap {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            margin: 10%;
+            z-index: 1;
+        }
+    }
+    &::after {
+        content: "";
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $clr-light;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .banner {
+        background-color: $clr-dark;
+        path.b,
+        path.r {
+            fill: $clr-dark;
+        }
+        path.y,
+        path.n {
+            fill: $clr-primary;
+        }
+        &::after {
+            content: "";
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: $clr-primary;
+        }
+    }
+}

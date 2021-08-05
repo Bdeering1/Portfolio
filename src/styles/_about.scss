@@ -1,0 +1,32 @@
+.about {
+    height: 100%;
+    max-width: 1440px;
+    margin: 10% auto;
+    display: grid;
+    grid-template: repeat(3, 1fr) / 1fr;
+    grid-row-gap: 20px;
+    align-items: end;
+
+    .about-title {
+        text-align: center;
+        font-size: 144px;
+        color: $clr-primary;
+    }
+
+    .about-desc {
+        margin: 0 10%;
+        font-size: 36px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .about {
+        background-color: $clr-dark;
+        .about-title {
+            color: $clr-font-dark;
+        }
+        .about-desc {
+            color: $clr-font-dark;
+        }
+    }
+}

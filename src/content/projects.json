@@ -1,0 +1,9 @@
+[
+    {
+        "title": "Visual Sorting",
+        "subtitle": "algorithm learning tool",
+        "desc": "Algorithm learning tool with modular and scalable design. Utlizes centralized state management and AJAX methods. Includes bubble sort, quick sort, and merge sort.",
+        "imgLg": "",
+        "imgSm": "../assets/images/visual-sorting-sm.png"
+    }
+]
