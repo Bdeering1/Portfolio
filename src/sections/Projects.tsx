@@ -6,7 +6,7 @@ export default function Projects() {
     return (
         <div className="projects">
             {projects.map((proj, idx) => (
-                <ProjectCard project={proj} key={idx}/>
+                <ProjectCard project={proj} id={idx} key={idx}/>
             ))}
         </div>
     )

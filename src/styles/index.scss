@@ -38,7 +38,8 @@ body {
 }
 main {
     height: 100%;
-    font-family: 'Newake', 'Arial', 'sans-serif';
+    font-family: $font-title;
+    //overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {

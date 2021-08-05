@@ -8,8 +8,10 @@ interface ProjectCardProps {
         desc : string,
         imgLg : string,
         imgSm : string,
-        stack: []
-    }
+        link: string,
+        stack?: []
+    },
+    id : number
 }
 
 interface ProjectCardState {
@@ -22,12 +24,19 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
         this.state = {
             isFlipped: false
         };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState((state) => ({
+            isFlipped: !state.isFlipped
+        }))
     }
     
     render() {
           return (
             <div className="project-wrapper">
-                <button className="project-card" data-flipped={this.state.isFlipped}>
+                <button className="project-card" onClick={this.handleClick} data-flipped={this.state.isFlipped}>
                     <div className="project-card-inner">
                         <div className="project-card-front"> 
                             <h2 className="project-title">{this.props.project.title}</h2>
