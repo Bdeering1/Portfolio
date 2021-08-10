@@ -20,15 +20,17 @@
 *::after {
     font-family: inherit;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
     height: var(--inner-height);
-    background-color: #FAFAFA;
 }
 body {
     height: 100%;
     margin: 0;
+    background-color: #FAFAFA;
 }
 #___gatsby {
     height: 100%;
@@ -39,7 +41,13 @@ body {
 main {
     height: 100%;
     font-family: $font-title;
-    //overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+p {
+    font-family: $font-body;
 }
 
 @media (prefers-color-scheme: dark) {

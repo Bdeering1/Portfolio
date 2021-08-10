@@ -4,14 +4,23 @@ import About from '../sections/About';
 import '../styles/index.scss';
 import Projects from '../sections/Projects';
 
-const IndexPage = () => {
-  return (
-    <main>
-      <Banner/>
-      <About/>
-      <Projects/>
-    </main>
-  )
-}
+export default class IndexPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-export default IndexPage;
+  componentDidUpdate() {
+    let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    document.documentElement.style.setProperty('--inner-height', `${innerHeight}px`);
+  }
+
+  render() {
+    return (
+      <main>
+        <Banner/>
+        <About/>
+        <Projects/>
+      </main>
+    )
+  }
+}

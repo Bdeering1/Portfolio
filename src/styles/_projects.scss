@@ -1,5 +1,7 @@
-@mixin card-shadow($bool) {
-    box-shadow: -10px*$bool 20px 4px $clr-shadow;
+$card-tilt: 2deg;
+
+@mixin card-shadow($bool, $color) {
+    box-shadow: -10px*$bool 20px 4px $color;
 }
 
 .projects {
@@ -10,10 +12,15 @@
 
 .project-wrapper {
     flex: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.project-grid {
     height: 100%;
     width: 100%;
     max-width: 1440px;
-    margin: auto;
     display: grid;
     grid-template: repeat(7, 1fr) / repeat(7, 1fr);
     grid-gap: 20px;
@@ -22,31 +29,28 @@
 .project-card {
     grid-area: 2/2/7/7;
     background-color: transparent;
-    perspective: 1000px;
-    border: none;
-    padding: 0;
+    perspective: 1500px;
+
+    .svg {
+        box-shadow: 1px solid black;
+    }
 
     .project-card-inner {
-        @include card-shadow(1);
-        width: 100%;
+        @include card-shadow(1, $clr-shadow);
+        position: relative;
         height: 100%;
-        //position: relative;
-        /* display: grid;
-        grid-template: repeat(10, 1fr) / repeat(10, 1fr); */
-        //box-shadow: $card-shadow;
         background-color: $clr-primary;
         will-change: transform;
         transition: transform 1200ms;
         transform-style: preserve-3d;
+        transform: rotateY($card-tilt);
 
 
         .project-card-front, .project-card-back {
             position: absolute;
-            width: 100%;
             height: 100%;
             display: grid;
             grid-template: repeat(10, 1fr) / repeat(10, 1fr);
-            //-webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             transform-style: preserve-3d;
         }
@@ -57,7 +61,7 @@
         .project-title {
             grid-area: 2/2/4/10;
             align-self: center;
-            justify-self: center;
+            text-align: center;
             font-size: 120px;
             letter-spacing: 0.05em;
             color: $clr-light;
@@ -115,18 +119,51 @@
                 grid-area: 3/2/5/8;
                 color: $clr-dark;
                 z-index: 1;
+                font-size: 16px;
             }
         }
     }
 
     &[data-flipped  = true] .project-card-inner {
-        @include card-shadow(-1);
-        transform: rotateY(180deg);
+        @include card-shadow(-1, $clr-shadow);  
+        transform: rotateY(180deg + $card-tilt);
+        animation-name: shadowAnimB;
+        animation-duration: 1200ms;
     }
-    
-    .project-card-front:hover,
-    .project-card-back:hover {
-        box-shadow: 0 0 20px $clr-highlight-light;
+
+    &[data-flipped  = false] .project-card-inner { 
+        animation-name: shadowAnimF;
+        animation-duration: 1200ms;
+    }
+
+    &[data-flipped  = false] .project-card-inner:hover {
+        @include card-shadow(1, $clr-highlight-light);
+    }
+    &[data-flipped  = true] .project-card-inner:hover {
+        @include card-shadow(-1, $clr-highlight-light);
+    }
+
+    @keyframes shadowAnimF {
+        0% {
+            @include card-shadow(-1, $clr-shadow);
+        }
+        50% {
+            box-shadow: none;
+        }
+        100% {
+            @include card-shadow(1, $clr-shadow);
+        }
+    }
+    @keyframes shadowAnimB {
+        0% {
+            @include card-shadow(1, $clr-shadow);
+        }
+        50% {
+            box-shadow: none;
+        }
+        100% {
+            @include card-shadow(-1, $clr-shadow);
+        }
     }
 }
 
@@ -158,9 +195,11 @@
                 }
             }
         }
-        .project-card-front:hover,
-        .project-card-back:hover {
-            box-shadow: 0 0 20px $clr-highlight-dark;
+        &[data-flipped  = false] .project-card-inner:hover {
+            @include card-shadow(1, $clr-highlight-dark);
+        }
+        &[data-flipped  = true] .project-card-inner:hover {
+            @include card-shadow(-1, $clr-highlight-dark);
         }
     }
 }
