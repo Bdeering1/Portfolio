@@ -1,13 +1,13 @@
-$card-tilt: 2deg;
+$card-tilt: -3deg;
 
 @mixin card-shadow($bool, $color) {
     box-shadow: -10px*$bool 20px 4px $color;
 }
 
 .projects {
-    height: 100%;
     display: flex;
     overflow-x: scroll;
+    scroll-snap-type: x mandatory;
 }
 
 .project-wrapper {
@@ -15,6 +15,7 @@ $card-tilt: 2deg;
     width: 100%;
     display: flex;
     justify-content: center;
+    scroll-snap-align: start;
 }
 
 .project-grid {
@@ -28,12 +29,8 @@ $card-tilt: 2deg;
 
 .project-card {
     grid-area: 2/2/7/7;
-    background-color: transparent;
+    //background-color: transparent;
     perspective: 1500px;
-
-    .svg {
-        box-shadow: 1px solid black;
-    }
 
     .project-card-inner {
         @include card-shadow(1, $clr-shadow);
@@ -41,10 +38,9 @@ $card-tilt: 2deg;
         height: 100%;
         background-color: $clr-primary;
         will-change: transform;
-        transition: transform 1200ms;
+        transition: transform 1200ms, box-shadow 200ms ease-out;
         transform-style: preserve-3d;
         transform: rotateY($card-tilt);
-
 
         .project-card-front, .project-card-back {
             position: absolute;
@@ -82,6 +78,7 @@ $card-tilt: 2deg;
             height: calc(100% + 20px);
             transform: translateY(-20px);
             background-color: $clr-light;
+            backface-visibility: hidden;
         }
 
         .text-box {

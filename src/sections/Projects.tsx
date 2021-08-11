@@ -4,10 +4,10 @@ const projects = require('../content/projects.json');
 
 export default function Projects() {
     return (
-        <div className="projects">
+        <section className="projects">
             {projects.map((proj, idx) => (
                 <ProjectCard project={proj} id={idx} key={idx}/>
             ))}
-        </div>
+        </section>
     )
 }

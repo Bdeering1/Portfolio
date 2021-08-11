@@ -23,6 +23,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+p {
+    font-family: $font-body;
+}
 
 html {
     height: var(--inner-height);
@@ -41,26 +47,16 @@ body {
 main {
     height: 100%;
     font-family: $font-title;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-}
-p {
-    font-family: $font-body;
-}
-
-@media (prefers-color-scheme: dark) {
-    html {
-        background-color: #130330;
-    }
-}
-
-
-/* .scroll-1 {
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
 }
 section {
+    height: 100%;
     scroll-snap-align: start;
-} */
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #130330;
+    }
+}

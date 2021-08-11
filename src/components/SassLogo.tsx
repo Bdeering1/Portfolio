@@ -12,7 +12,7 @@ export default function SassLogo(props : SassLogoProps) {
             <rect x="4" width="174" height="130" fill="url(#pattern2)"/>
             </g>
             <defs>
-            <filter id="filter2_d" x="0" y="0" width="18    2" height="138" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+            <filter id="filter2_d" x="0" y="0" width="182" height="138" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
             <feFlood floodOpacity="0" result="BackgroundImageFix"/>
             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
             <feOffset dy="4"/>

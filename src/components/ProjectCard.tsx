@@ -4,6 +4,7 @@ import ReactLogo from './ReactLogo';
 import ReduxLogo from './ReduxLogo';
 import SassLogo from './SassLogo';
 import JavascriptLogo from './JavaScriptLogo';
+import BootstrapLogo from './BootstrapLogo';
 
 interface ProjectCardProps {
     project: {
@@ -13,11 +14,10 @@ interface ProjectCardProps {
         imgLg : string,
         imgSm : string,
         link: string,
-        stack?: []
+        stack: string[]
     },
     id : number
 }
-
 interface ProjectCardState {
     isFlipped : boolean,
     darkQuery : boolean
@@ -31,14 +31,16 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
             darkQuery: false
         };
         this.handleClick = this.handleClick.bind(this);
-        this.updateQuery = this.updateQuery.bind(this);
+        this.checkColorPref = this.checkColorPref.bind(this);
+        this.JSXLogoFromStr = this.JSXLogoFromStr.bind(this);
     }
 
     componentDidMount() {
-        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.updateQuery);
+        this.checkColorPref();
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.checkColorPref);
     }
 
-    updateQuery() {
+    checkColorPref() {
         let darkQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
         this.setState({
             darkQuery
@@ -50,39 +52,32 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
             isFlipped: !state.isFlipped
         }))
     }
+
+    JSXLogoFromStr(logo : string, style : {}, key : number) {
+        switch(logo) {
+            case "React":
+                return <ReactLogo darkMode={this.state.darkQuery} style={style} key={key}/>;
+            case "Redux":
+                return <ReduxLogo darkMode={this.state.darkQuery} style={style} key={key}/>;
+            case "SASS":
+                return <SassLogo darkMode={this.state.darkQuery} style={style} key={key}/>;
+            case "Javascript":
+                return <JavascriptLogo darkMode={this.state.darkQuery} style={style} key={key}/>;
+            case "Bootstrap":
+                return <BootstrapLogo darkMode={this.state.darkQuery} style={style} key={key}/>;
+            default:
+                return <div style={style} key={key}></div>;
+        }
+    }
     
     render() {
         return (
             <div className="project-wrapper">
                 <div className="project-grid">
-                    <ReactLogo darkMode={this.state.darkQuery}
-                        style={{
-                            gridArea: "2/7/3/8",
-                            justifySelf: "center",
-                            height: "100%"
-                        }}
-                    />
-                    <ReduxLogo darkMode={this.state.darkQuery}
-                        style={{
-                            gridArea: "3/7/4/8",
-                            justifySelf: "center",
-                            height: "100%"
-                        }}
-                    />
-                    <SassLogo darkMode={this.state.darkQuery}
-                        style={{
-                            gridArea: "4/7/5/8",
-                            justifySelf: "center",
-                            height: "100%"
-                        }}
-                    />
-                    <JavascriptLogo darkMode={this.state.darkQuery}
-                        style={{
-                            gridArea: "5/7/6/8",
-                            justifySelf: "center",
-                            height: "100%"
-                        }}
-                    />
+                    {this.props.project.stack.map((item, idx) => (
+                        this.JSXLogoFromStr(item, {gridArea: `${idx+2}/1/${idx+3}/2`, justifySelf: "center", height: "100%"}, idx)
+                    ))
+                    }
                     <div className="project-card" onClick={this.handleClick} data-flipped={this.state.isFlipped}>
                         <div className="project-card-inner">
                             <div className="project-card-front"> 
