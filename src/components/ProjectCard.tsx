@@ -16,7 +16,9 @@ interface ProjectCardProps {
         link: string,
         stack: string[]
     },
-    id : number
+    id : number,
+    width : number,
+    height : number
 }
 interface ProjectCardState {
     isFlipped : boolean,
@@ -71,9 +73,18 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
     }
     
     render() {
+        let rotationAdjustment = (this.props.width - this.props.height) / 2;
         return (
-            <div className="project-wrapper">
-                <div className="project-grid">
+            <div
+                className="project-wrapper"
+                style={{
+                    width: this.props.width,
+                    height: this.props.height,
+                    transform: `rotate(90deg) translateY(${rotationAdjustment}px)`,
+                    margin: `${rotationAdjustment}px 0`
+                }}
+            >
+                <div className="project-grid" style={{width: this.props.width, height: this.props.height}}>
                     {this.props.project.stack.map((item, idx) => (
                         this.JSXLogoFromStr(item, {gridArea: `${idx+2}/1/${idx+3}/2`, justifySelf: "center", height: "100%"}, idx)
                     ))

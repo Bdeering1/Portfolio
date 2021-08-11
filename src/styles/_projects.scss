@@ -6,22 +6,27 @@ $card-tilt: -3deg;
 
 .projects {
     display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+    flex-direction: column;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.projects::-webkit-scrollbar {
+    display: none;
 }
 
 .project-wrapper {
-    flex: none;
-    width: 100%;
     display: flex;
     justify-content: center;
     scroll-snap-align: start;
+    //transform: rotate(90deg);
 }
 
 .project-grid {
-    height: 100%;
-    width: 100%;
-    max-width: 1440px;
+    //height: 100%;
+    //width: 100%;
+    max-height: 1440px;
     display: grid;
     grid-template: repeat(7, 1fr) / repeat(7, 1fr);
     grid-gap: 20px;
