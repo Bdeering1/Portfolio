@@ -3,6 +3,7 @@ import Banner from '../sections/Banner';
 import About from '../sections/About';
 import Stack from '../sections/Stack';
 import Projects from '../sections/Projects';
+import { disableScroll, enableScroll } from '../polyfill/scrolling';
 import '../styles/index.scss';
 import _ from 'lodash';
 
@@ -22,6 +23,7 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     }
     this.updateWidthHeight = this.updateWidthHeight.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
+    this.checkColorPref = this.checkColorPref.bind(this);
   }
 
   componentDidMount() {
@@ -36,12 +38,12 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     this.checkColorPref();
   }
 
-checkColorPref() {
-    let darkQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    this.setState({
-        darkQuery
-    })
-}
+  checkColorPref() {
+      let darkQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      this.setState({
+          darkQuery
+      })
+  }
 
   updateWidthHeight() {
     let innerWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -56,37 +58,9 @@ checkColorPref() {
   handleScroll(e : any) {
     let element = e.target;
     if (element.scrollTop > this.state.height * 2.2) {
-      this.disableScroll();
-      setTimeout(() => this.enableScroll(), 800);
+      disableScroll();
+      setTimeout(() => enableScroll(), 800);
     }
-  }
-
-  preventDefault(e) {
-    e.preventDefault();
-  }
-
-  // call this to Disable
-  disableScroll() {
-    document.querySelector('.projects').addEventListener('scroll', this.preventDefault, false); // older FF
-    document.querySelector('.projects').addEventListener('wheel', this.preventDefault, this.wheelOpt()); // modern desktop
-  }
-
-  // call this to Enable
-  enableScroll() {
-    document.querySelector('.projects').removeEventListener('scroll', this.preventDefault, false);
-    document.querySelector('.projects').removeEventListener('wheel', this.preventDefault, false);
-  }
-
-  wheelOpt() {
-    // modern Chrome requires { passive: false } when adding event
-    var supportsPassive = false;
-    try {
-      window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-        get: function () { supportsPassive = true; } 
-      }));
-    } catch(e) {}
-
-    return supportsPassive ? { passive: false } : false;
   }
 
   render() {
