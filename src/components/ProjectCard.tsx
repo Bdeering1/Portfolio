@@ -1,16 +1,6 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
-import {
-    JSXLogoFromStr,
-    ReactLogo,
-    SassLogo,
-    ReduxLogo,
-    BootstrapLogo,
-    JavascriptLogo,
-    NodeLogo,
-    CSSLogo,
-    HTMLLogo
-} from '../components/LightDarkLogos';
+import JSXLogoFromStr from '../components/LightDarkLogos';
 
 interface ProjectCardProps {
     project: {
@@ -41,10 +31,12 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
     }
 
     async handleClick() {
-        //await new Promise(resolve => setTimeout(resolve, 600));
         this.setState((state) => ({
             isFlipped: !state.isFlipped
         }))
+        await new Promise(resolve => setTimeout(resolve, 400));
+        let frontTitle = document.getElementById(`front-title-${this.props.id}`);
+        this.state.isFlipped ? frontTitle.style.display = 'none' : frontTitle.style.display = '';
     }
     
     render() {
@@ -75,7 +67,7 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
                     <div className="project-card" onClick={this.handleClick} data-flipped={this.state.isFlipped}>
                         <div className="project-card-inner">
                             <div className="project-card-front"> 
-                                <h2 className="project-title">{this.props.project.title}</h2>
+                                <h2 className="project-title" id={`front-title-${this.props.id}`}>{this.props.project.title}</h2>
                                 <span className="divider"/>
                                 <div className="img-wrapper">
                                     <StaticImage

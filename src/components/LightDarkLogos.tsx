@@ -5,7 +5,7 @@ interface LogoProps {
     darkMode: boolean
 }
 
-export function JSXLogoFromStr(logo : string, style : {}, darkMode : boolean, key : number) {
+export default function JSXLogoFromStr(logo : string, style : {}, darkMode : boolean, key : number) {
     switch(logo) {
         case "React":
             return <ReactLogo darkMode={darkMode} style={style} key={key}/>;
@@ -28,7 +28,7 @@ export function JSXLogoFromStr(logo : string, style : {}, darkMode : boolean, ke
     }
 }
 
-export function ReactLogo(props : LogoProps) {
+function ReactLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="137" height="137" viewBox="0 0 137 137" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter0_d)">
@@ -55,7 +55,7 @@ export function ReactLogo(props : LogoProps) {
     )
 }
 
-export function SassLogo(props : LogoProps) {
+function SassLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="182" height="138" viewBox="0 0 182 138" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter2_d)">
@@ -83,7 +83,7 @@ export function SassLogo(props : LogoProps) {
     )
 }
 
-export function ReduxLogo(props : LogoProps) {
+function ReduxLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="143" height="137" viewBox="0 0 143 137" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter1_d)">
@@ -110,7 +110,7 @@ export function ReduxLogo(props : LogoProps) {
     )
 }
 
-export function BootstrapLogo(props : LogoProps) {
+function BootstrapLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="169" height="136" viewBox="0 0 169 136" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter4_d)">
@@ -137,7 +137,7 @@ export function BootstrapLogo(props : LogoProps) {
     )
 }
 
-export function JavascriptLogo(props : LogoProps) {
+function JavascriptLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="141" height="141" viewBox="0 0 141 141" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter3_d)">
@@ -164,7 +164,7 @@ export function JavascriptLogo(props : LogoProps) {
     )
 }
 
-export function NodeLogo(props : LogoProps) {
+function NodeLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="180" height="129" viewBox="0 0 180 129" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter6_d)">
@@ -191,7 +191,7 @@ export function NodeLogo(props : LogoProps) {
     )
 }
 
-export function CSSLogo(props : LogoProps) {
+function CSSLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="137" height="137" viewBox="0 0 137 137" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter7_d)">
@@ -218,7 +218,7 @@ export function CSSLogo(props : LogoProps) {
     )
 }
 
-export function HTMLLogo(props : LogoProps) {
+function HTMLLogo(props : LogoProps) {
     return (
         <svg style={props.style} width="137" height="137" viewBox="0 0 137 137" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <g filter="url(#filter8_d)">

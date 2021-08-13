@@ -21,12 +21,24 @@
     body .body-text-lg {
         font-size: 16px;
     }
+    body .about .about-title {
+        font-size: 64px;
+    }
     .stack {
         height: fit-content;
     }
-    body .project-card .project-card-inner {
-        .project-title {
-            font-size: 64px;
+    .projects {
+        svg {
+            display: none;
+        }
+        .project-card .project-card-inner {
+            .project-title {
+                grid-area: 2/1/4/11;
+                font-size: 64px;
+            }
+            .text-box .project-subtitle {
+                font-size: 20px;
+            }
         }
     }
 }

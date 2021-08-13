@@ -29,7 +29,7 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
         if (element.scrollTop < this.props.height * 2) {
             if (this.state.prevScroll !== null && element.scrollTop < this.state.prevScroll) {
                 disableScroll();
-                setTimeout(() => enableScroll(), 800);
+                setTimeout(() => enableScroll(), 1000);
                 this.setState({prevScroll: -1});
             }
             else {

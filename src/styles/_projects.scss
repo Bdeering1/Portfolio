@@ -42,10 +42,10 @@ $card-tilt: -3deg;
         position: relative;
         height: 100%;
         background-color: $clr-primary;
-        will-change: transform; //necessary?
         transition: transform 1200ms, box-shadow 200ms ease-out;
         transform-style: preserve-3d;
         transform: rotateY($card-tilt);
+        //will-change: transform;
 
         .project-card-front, .project-card-back {
             position: absolute;
@@ -54,8 +54,7 @@ $card-tilt: -3deg;
             display: grid;
             grid-template: repeat(10, 1fr) / repeat(10, 1fr);
             backface-visibility: hidden;
-            //transform-style: preserve-3d;
-            will-change: transform;
+            //will-change: transform;
         }
         .project-card-back {
             transform: rotateY(180deg);
@@ -68,6 +67,7 @@ $card-tilt: -3deg;
             font-size: 120px;
             letter-spacing: 0.05em;
             color: $clr-light;
+            will-change: transform;
         }
 
         .divider {
@@ -134,17 +134,11 @@ $card-tilt: -3deg;
         transform: rotateY(180deg + $card-tilt);
         animation-name: shadowAnimB;
         animation-duration: 1200ms;
-        /* .project-card-front {
-            display: none;
-        } */
     }
 
     &[data-flipped  = false] .project-card-inner { 
         animation-name: shadowAnimF;
         animation-duration: 1200ms;
-        /* .project-card-back {
-            display: none;
-        } */
     }
 
     &[data-flipped  = false] .project-card-inner:hover {
