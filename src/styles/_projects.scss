@@ -7,7 +7,7 @@ $card-tilt: -3deg;
 .projects {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow: hidden scroll;
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -42,18 +42,20 @@ $card-tilt: -3deg;
         position: relative;
         height: 100%;
         background-color: $clr-primary;
-        will-change: transform;
+        will-change: transform; //necessary?
         transition: transform 1200ms, box-shadow 200ms ease-out;
         transform-style: preserve-3d;
         transform: rotateY($card-tilt);
 
         .project-card-front, .project-card-back {
             position: absolute;
+            width: 100%;
             height: 100%;
             display: grid;
             grid-template: repeat(10, 1fr) / repeat(10, 1fr);
             backface-visibility: hidden;
-            transform-style: preserve-3d;
+            //transform-style: preserve-3d;
+            will-change: transform;
         }
         .project-card-back {
             transform: rotateY(180deg);
@@ -104,7 +106,8 @@ $card-tilt: -3deg;
                 align-self: center;
                 text-align: center;
                 //transform: translateY(5px);
-                font-size: 36px;
+                font-size: 32px;
+                letter-spacing: 1px;
                 color: $clr-dark;
                 z-index: 1; //why is this needed??
             }
@@ -118,10 +121,10 @@ $card-tilt: -3deg;
             }
 
             .project-desc {
-                grid-area: 3/2/5/8;
+                grid-area: 2/2/5/8;
+                align-self: center;
                 color: $clr-dark;
                 z-index: 1;
-                font-size: 16px;
             }
         }
     }
@@ -131,11 +134,17 @@ $card-tilt: -3deg;
         transform: rotateY(180deg + $card-tilt);
         animation-name: shadowAnimB;
         animation-duration: 1200ms;
+        /* .project-card-front {
+            display: none;
+        } */
     }
 
     &[data-flipped  = false] .project-card-inner { 
         animation-name: shadowAnimF;
         animation-duration: 1200ms;
+        /* .project-card-back {
+            display: none;
+        } */
     }
 
     &[data-flipped  = false] .project-card-inner:hover {

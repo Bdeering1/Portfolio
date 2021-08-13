@@ -1,0 +1,29 @@
+@media (max-width: 1200px) {
+    body .body-text-sm {
+        font-size: 16px;
+    }
+    body .body-text-lg {
+        font-size: 24px;
+    }
+    body .about .about-title {
+        font-size: 96px;
+    }
+    body .project-card .project-card-inner {
+        .project-title {
+            font-size: 96px;
+        }
+        .text-box .project-subtitle {
+            font-size: 24px;
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    body .body-text-lg {
+        font-size: 16px;
+    }
+    body .project-card .project-card-inner {
+        .project-title {
+            font-size: 64px;
+        }
+    }
+}

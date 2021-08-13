@@ -25,6 +25,14 @@
         left: 0;
         background-color: $clr-light;
     }
+    .subtitle {
+        color: $clr-light;
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+        font-size: 32px;
+        font-family: $font-body;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
