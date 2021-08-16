@@ -3,7 +3,7 @@ import ProjectCard from '../components/ProjectCard';
 import { disableScroll, enableScroll } from '../polyfill/scrolling';
 import _ from 'lodash';
 
-const projects = require('../content/projects.json');
+const projects = require('../../data/projects.json');
 
 interface ProjectsProps {
     darkMode : boolean,

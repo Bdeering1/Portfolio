@@ -5,7 +5,7 @@ interface StackProps {
     darkMode : boolean
 }
 
-const stackArray = ["React", "Redux", "Node", "SASS", "Bootstrap", "Javascript", "CSS", "HTML"];
+const stackArray = ["React", "Redux", "Node", "SASS", "Bootstrap", "Javascript", "CSS", "HTML"]; //add gatsby and graphql to this :)
 
 export default function Stack(props : StackProps) {
     return (

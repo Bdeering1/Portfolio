@@ -7,8 +7,7 @@ interface ProjectCardProps {
         title : string,
         subtitle : string
         desc : string,
-        imgLg : string,
-        imgSm : string,
+        img : string,
         link: string,
         stack: string[]
     },
@@ -28,6 +27,10 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
             isFlipped: false
         };
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount() {
+        console.log(this.props.project);
     }
 
     async handleClick() {
@@ -70,13 +73,14 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
                                 <h2 className="project-title" id={`front-title-${this.props.id}`}>{this.props.project.title}</h2>
                                 <span className="divider"/>
                                 <div className="img-wrapper">
-                                    <StaticImage
+                                    {/* <StaticImage
                                         src="../assets/images/visual-sorting-sm.png"
                                         alt={this.props.project.title}
                                         placeholder="blurred"
                                         transformOptions={{fit: "cover", cropFocus: "bottom"}}
                                         style={{height: "100%", maxHeight: "100%"}}
-                                    />
+                                    /> */}
+                                    <img src={this.props.project.img} alt={this.props.project.title}/>
                                 </div>
                             </div>
                             <div className="project-card-back">

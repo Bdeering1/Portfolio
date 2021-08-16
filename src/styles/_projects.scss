@@ -86,6 +86,13 @@ $card-tilt: -3deg;
             transform: translateY(-20px);
             background-color: $clr-light;
             backface-visibility: hidden;
+
+            img {
+                min-height: 100%;
+                max-height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
         }
 
         .text-box {

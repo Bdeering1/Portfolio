@@ -3,8 +3,7 @@
         "title": "Visual Sorting",
         "subtitle": "algorithm learning tool",
         "desc": "Modular and scalable design. Utlizes centralized state management and AJAX methods. Includes bubble sort, quick sort, and merge sort.",
-        "imgLg": "",
-        "imgSm": "../assets/images/visual-sorting-sm.png",
+        "img": "/images/visual-sorting.png",
         "link": "https://bdeering1.github.io/Visual-Sorting-App",
         "stack": ["React", "Redux", "Node", "SASS"]
     },
@@ -12,8 +11,7 @@
         "title": "To Do List",
         "subtitle": "personal organization tool",
         "desc": "Makes use of javascript event listeners, DOM manipulation, and browser storage. Styling utilizes custom properties, pseudo elements, and layouts.",
-        "imgLg": "",
-        "imgSm": "../assets/images/to-do-sm.png",
+        "img": "/images/to-do.png",
         "link": "https://bdeering1.github.io/To-Do-List/",
         "stack": ["Javascript", "SASS", "HTML"]
     },
@@ -21,8 +19,7 @@
         "title": "Typing Speed",
         "subtitle": "typing practice tool",
         "desc": "Designed using Reactstrap along with custom styles. Uses the quotable API.",
-        "imgLg": "",
-        "imgSm": "../assets/images/speed-typing-sm.png",
+        "img": "/images/speed-typing.png",
         "link": "https://bdeering1.github.io/Speed-Typing-App/",
         "stack": ["React", "Node", "Bootstrap"]
     }

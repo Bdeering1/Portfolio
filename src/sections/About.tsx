@@ -1,5 +1,5 @@
 import React from 'react';
-const about = require('../content/about.json');
+const about = require('../../data/about.json');
 
 export default function About() {
     return (
