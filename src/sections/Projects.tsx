@@ -1,4 +1,5 @@
 import React from 'react';
+//import { graphql } from 'gatsby';
 import ProjectCard from '../components/ProjectCard';
 import { disableScroll, enableScroll } from '../polyfill/scrolling';
 import _ from 'lodash';
@@ -8,7 +9,19 @@ const projects = require('../../data/projects.json');
 interface ProjectsProps {
     darkMode : boolean,
     width : number,
-    height : number
+    height : number,
+/*     data: {
+        edges : Array<{
+            node: {
+                title : string,
+                subtitle : string,
+                desc : string,
+                img : string,
+                link : string,
+                stack : string[]
+            }
+        }>
+    } */
 }
 
 interface ProjectsState {
@@ -50,9 +63,27 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
                     transform: `rotate(-90deg) translate(${rotationAdjustment}px, ${rotationAdjustment}px)`
                 }}>
                 {projects.map((proj, idx) => (
-                    <ProjectCard project={proj} darkMode={this.props.darkMode} id={idx} width={this.props.width} height={this.props.height} key={idx}/>
+                    <ProjectCard project={proj} darkMode={this.props.darkMode} width={this.props.width} height={this.props.height}  id={idx} key={idx}/>
                 ))}
             </section>
         )
     }
 }
+
+/* export const query = graphql`
+{
+    allProjectsJson {
+        edges {
+            node {
+                title,
+                subtitle
+                desc,
+                img,
+                link,
+                stack
+            }
+        }
+    }
+}
+`; */
+

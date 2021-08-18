@@ -13,15 +13,22 @@ module.exports = {
         icon: "src/assets/images/icon.png",
       },
     },
-    "gatsby-plugin-sharp",
+    "gatsby-transformer-json",
     "gatsby-transformer-sharp",
-    {
+    "gatsby-plugin-sharp",
+/*     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "images",
         path: "./src/assets/images/",
       },
       __key: "images",
+    }, */
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: "./data",
+      },
     },
     {
       resolve: `gatsby-plugin-typescript`,

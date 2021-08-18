@@ -25,7 +25,8 @@
         font-size: 64px;
     }
     .stack {
-        height: fit-content;
+        //height: fit-content;
+        overflow-y: scroll;
     }
     .projects {
         svg {

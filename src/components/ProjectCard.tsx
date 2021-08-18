@@ -12,9 +12,9 @@ interface ProjectCardProps {
         stack: string[]
     },
     darkMode : boolean
-    id : number,
     width : number,
-    height : number
+    height : number,
+    id : number,
 }
 interface ProjectCardState {
     isFlipped : boolean
@@ -27,10 +27,6 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
             isFlipped: false
         };
         this.handleClick = this.handleClick.bind(this);
-    }
-
-    componentDidMount() {
-        console.log(this.props.project);
     }
 
     async handleClick() {
