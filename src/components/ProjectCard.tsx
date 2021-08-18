@@ -11,9 +11,7 @@ interface ProjectCardProps {
         link: string,
         stack: string[]
     },
-    darkMode : boolean
-    width : number,
-    height : number,
+    darkMode : boolean,
     id : number,
 }
 interface ProjectCardState {
@@ -39,18 +37,9 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
     }
     
     render() {
-        let rotationAdjustment = (this.props.width - this.props.height) / 2;
         return (
-            <div
-                className="project-wrapper"
-                style={{
-                    width: this.props.width,
-                    height: this.props.height,
-                    transform: `rotate(90deg) translateY(${rotationAdjustment}px)`,
-                    margin: `${rotationAdjustment}px 0`
-                }}
-            >
-                <div className="project-grid" style={{width: this.props.width, height: this.props.height}}>
+            <div className="project-wrapper">
+                <div className="project-grid">
                     {this.props.project.stack.map((item, idx) => (
                         JSXLogoFromStr(
                             item,

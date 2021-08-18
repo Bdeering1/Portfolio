@@ -52,18 +52,12 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
     }
 
     render() {
-        let rotationAdjustment = (this.props.width - this.props.height) / 2;
         return (
             <section
                 className="projects"
-                onScroll={_.throttle(this.handleScroll, 100)}
-                style={{
-                    width: this.props.height, //switched to fit screen since section is rotated 90deg
-                    height: this.props.width,
-                    transform: `rotate(-90deg) translate(${rotationAdjustment}px, ${rotationAdjustment}px)`
-                }}>
+                onScroll={_.throttle(this.handleScroll, 100)}>
                 {projects.map((proj, idx) => (
-                    <ProjectCard project={proj} darkMode={this.props.darkMode} width={this.props.width} height={this.props.height}  id={idx} key={idx}/>
+                    <ProjectCard project={proj} darkMode={this.props.darkMode}  id={idx} key={idx}/>
                 ))}
             </section>
         )
