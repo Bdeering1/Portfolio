@@ -24,8 +24,11 @@
     body .about .about-title {
         font-size: 64px;
     }
-    .stack {
-        height: fit-content;
+    .stack-wrapper {
+        svg {
+            width: 100px;
+            height: auto;
+        }
     }
     .projects {
         svg {

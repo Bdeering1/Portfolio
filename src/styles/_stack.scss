@@ -1,4 +1,5 @@
 .stack {
+    height: 100%;
     margin-bottom: 10%;
     display: flex;
     flex-direction: column;
@@ -7,18 +8,19 @@
 }
 
 .stack-wrapper {
-    min-height: 50%;
-    width: 100%;
-    padding: 5%;
+    min-height: 50%; //???????
+    max-height: 100%;
+    height: fit-content; //??????????
+    padding: 5vh 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-content: center;
     flex-wrap: wrap;
 }
 
 .stack-bar {
     width: 100%;
-    height: 5%;
+    height: 45px;
     background-color: $clr-primary;
     box-shadow: 0 5px 4px $clr-shadow;
 }

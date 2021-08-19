@@ -8,7 +8,6 @@ import '../styles/index.scss';
 import _ from 'lodash';
 
 interface IndexPageState {
-  width : number,
   height : number,
   darkQuery : boolean
 }
@@ -17,25 +16,33 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
   constructor(props) {
     super(props);
     this.state = {
-      width: 0,
       height: 0,
       darkQuery: false
     }
-    this.updateWidthHeight = this.updateWidthHeight.bind(this);
+    this.updateHeight = this.updateHeight.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.checkColorPref = this.checkColorPref.bind(this);
   }
 
   componentDidMount() {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.checkColorPref);
-    window.addEventListener('resize', () => this.updateWidthHeight());
+    window.addEventListener('resize', this.updateHeight);
     window.addEventListener('orientationchange', () => {
       setTimeout(() => {
-        this.updateWidthHeight();
+        this.updateHeight();
       }, 400);
     });
-    this.updateWidthHeight();
+    this.updateHeight();
     this.checkColorPref();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateHeight);
+    window.removeEventListener('orientationchange', () => { //is this correct?
+      setTimeout(() => {
+        this.updateHeight();
+      }, 400);
+    });
   }
 
   checkColorPref() {
@@ -45,22 +52,20 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
       })
   }
 
-  updateWidthHeight() {
-    let innerWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  updateHeight() {
     let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     document.documentElement.style.setProperty('--inner-height', `${innerHeight}px`);
     this.setState({
-      width: innerWidth,
       height: innerHeight
     })
   }
 
   handleScroll(e : any) {
-    let element = e.target;
+/*     let element = e.target;
     if (element.scrollTop > this.state.height * 2.2) {
       disableScroll();
       setTimeout(() => enableScroll(), 800);
-    }
+    } */
   }
 
   render() {
@@ -69,7 +74,7 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
         <Banner/>
         <About/>
         <Stack darkMode={this.state.darkQuery}/>
-        <Projects width={this.state.width} height={this.state.height} darkMode={this.state.darkQuery}/>
+        <Projects height={this.state.height} darkMode={this.state.darkQuery}/>
       </main>
     )
   }

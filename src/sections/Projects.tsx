@@ -8,7 +8,6 @@ const projects = require('../../data/projects.json');
 
 interface ProjectsProps {
     darkMode : boolean,
-    width : number,
     height : number,
 /*     data: {
         edges : Array<{
@@ -38,7 +37,7 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
     }
 
     handleScroll(e : any) {
-        let element = e.target;
+/*         let element = e.target;
         if (element.scrollTop < this.props.height * 2) {
             if (this.state.prevScroll !== null && element.scrollTop < this.state.prevScroll) {
                 disableScroll();
@@ -48,7 +47,7 @@ export default class Projects extends React.Component<ProjectsProps, ProjectsSta
             else {
                 this.setState({prevScroll: element.scrollTop})
             }
-        }
+        } */
     }
 
     render() {
