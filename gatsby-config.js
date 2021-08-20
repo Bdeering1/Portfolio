@@ -1,6 +1,7 @@
 module.exports = {
+  pathPrefix: "/Portfolio",
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://bdeering1.github.io/Portfolio",
     title: "portfolo",
   },
   plugins: [
@@ -16,14 +17,6 @@ module.exports = {
     "gatsby-transformer-json",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
-/*     {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/assets/images/",
-      },
-      __key: "images",
-    }, */
     {
       resolve: "gatsby-source-filesystem",
       options: {

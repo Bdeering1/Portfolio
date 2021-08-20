@@ -54,7 +54,6 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
         height: innerHeight,
         mobileView: window.matchMedia("(max-width: 768px)").matches
       })
-      console.log(this.state.mobileView);
     }, 400);
   }
 
