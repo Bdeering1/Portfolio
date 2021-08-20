@@ -9,7 +9,8 @@ import _ from 'lodash';
 
 interface IndexPageState {
   height : number,
-  darkQuery : boolean
+  darkMode : boolean,
+  mobileView : boolean
 }
 
 export default class IndexPage extends React.Component<{}, IndexPageState> {
@@ -17,55 +18,52 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     super(props);
     this.state = {
       height: 0,
-      darkQuery: false
+      darkMode: false,
+      mobileView: false
     }
-    this.updateHeight = this.updateHeight.bind(this);
+    this.updateWidthHeight = this.updateWidthHeight.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.checkColorPref = this.checkColorPref.bind(this);
   }
 
   componentDidMount() {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.checkColorPref);
-    window.addEventListener('resize', this.updateHeight);
-    window.addEventListener('orientationchange', () => {
-      setTimeout(() => {
-        this.updateHeight();
-      }, 400);
-    });
-    this.updateHeight();
+    window.addEventListener('resize', this.updateWidthHeight);
+    window.addEventListener('orientationchange', this.updateWidthHeight);
+    this.updateWidthHeight();
     this.checkColorPref();
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.updateHeight);
-    window.removeEventListener('orientationchange', () => { //is this correct?
-      setTimeout(() => {
-        this.updateHeight();
-      }, 400);
-    });
+    window.removeEventListener('resize', this.updateWidthHeight);
+    window.removeEventListener('orientationchange', this.updateWidthHeight);
   }
 
   checkColorPref() {
-      let darkQuery = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      let darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
       this.setState({
-          darkQuery
+          darkMode
       })
   }
 
-  updateHeight() {
-    let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-    document.documentElement.style.setProperty('--inner-height', `${innerHeight}px`);
-    this.setState({
-      height: innerHeight
-    })
+  updateWidthHeight() {
+    setTimeout(() => { //fixes issue with rotation on mobile
+      let innerHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+      document.documentElement.style.setProperty('--inner-height', `${innerHeight}px`);
+      this.setState({
+        height: innerHeight,
+        mobileView: window.matchMedia("(max-width: 768px)").matches
+      })
+      console.log(this.state.mobileView);
+    }, 400);
   }
 
   handleScroll(e : any) {
-/*     let element = e.target;
+    let element = e.target;
     if (element.scrollTop > this.state.height * 2.2) {
       disableScroll();
       setTimeout(() => enableScroll(), 800);
-    } */
+    }
   }
 
   render() {
@@ -73,8 +71,8 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
       <main onScroll={_.throttle(this.handleScroll, 100)}>
         <Banner/>
         <About/>
-        <Stack darkMode={this.state.darkQuery}/>
-        <Projects height={this.state.height} darkMode={this.state.darkQuery}/>
+        <Stack darkMode={this.state.darkMode}/>
+        <Projects height={this.state.height} mobileView={this.state.mobileView} darkMode={this.state.darkMode}/>
       </main>
     )
   }

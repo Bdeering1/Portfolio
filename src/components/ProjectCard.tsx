@@ -7,10 +7,12 @@ interface ProjectCardProps {
         title : string,
         subtitle : string
         desc : string,
+        shortDesc : string,
         img : string,
         link: string,
         stack: string[]
     },
+    mobileView : boolean,
     darkMode : boolean,
     id : number,
 }
@@ -75,7 +77,7 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
                                     <div className="text-bg"/>
                                     <h3 className="project-subtitle">{this.props.project.subtitle}</h3>
                                     <span className="sub-divider"/>
-                                    <p className="project-desc">{this.props.project.desc}</p>
+                                    <p className="project-desc">{this.props.mobileView ? this.props.project.shortDesc : this.props.project.desc}</p>
                                 </div>
                             </div>
                         </div>
