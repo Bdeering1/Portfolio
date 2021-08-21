@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface LogoProps {
-    style: {},
+    style?: {},
     darkMode: boolean
 }
 
-export default function JSXLogoFromStr(logo : string, style : {}, darkMode : boolean, key : number) {
+export default function JSXLogoFromStr(logo : string, darkMode : boolean, key : number, style? : {}) {
     switch(logo) {
         case "React":
             return <ReactLogo darkMode={darkMode} style={style} key={key}/>;

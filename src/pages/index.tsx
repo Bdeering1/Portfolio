@@ -5,7 +5,7 @@ import Stack from '../sections/Stack';
 import Projects from '../sections/Projects';
 import { disableScroll, enableScroll } from '../polyfill/scrolling';
 import '../styles/index.scss';
-import _ from 'lodash';
+import { throttle } from 'lodash';
 
 interface IndexPageState {
   height : number,
@@ -60,14 +60,14 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
   handleScroll(e : any) {
     let element = e.target;
     if (element.scrollTop > this.state.height * 2.2) {
-      disableScroll();
+      disableScroll(); //for project section onlyw
       setTimeout(() => enableScroll(), 800);
     }
   }
 
   render() {
     return (
-      <main onScroll={_.throttle(this.handleScroll, 100)}>
+      <main onScroll={throttle(this.handleScroll, 100)}>
         <Banner/>
         <About/>
         <Stack darkMode={this.state.darkMode}/>

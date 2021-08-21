@@ -45,13 +45,13 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
                     {this.props.project.stack.map((item, idx) => (
                         JSXLogoFromStr(
                             item,
+                            this.props.darkMode,
+                            idx,
                             {
                                 gridArea: `${idx+2}/1/${idx+3}/2`,
                                 justifySelf: "center",
                                 height: "100%"
                             },
-                            this.props.darkMode,
-                            idx
                     )))
                     }
                     <div className="project-card" onClick={this.handleClick} data-flipped={this.state.isFlipped}>

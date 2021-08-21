@@ -15,7 +15,6 @@ export default function Stack(props : StackProps) {
                 {stackArray.map((item, idx) => (
                     JSXLogoFromStr(
                         item,
-                        {margin: 10},
                         props.darkMode,
                         idx
                 )))
