@@ -1,5 +1,4 @@
-import React from 'react';
-//import { graphql } from 'gatsby';
+import React, { useEffect, useRef } from 'react';
 import ProjectCard from '../components/ProjectCard';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { throttle } from 'lodash';
@@ -10,74 +9,48 @@ interface ProjectsProps {
     height : number,
     mobileView : boolean,
     darkMode : boolean,
-/*     data: {
-        edges : Array<{
-            node: {
-                title : string,
-                subtitle : string,
-                desc : string,s
-                img : string,
-                link : string,
-                stack : string[]
-            }
-        }>
-    } */
 }
 
-export default class Projects extends React.Component<ProjectsProps> {
-    sectionRef: React.RefObject<HTMLDivElement>;
-    constructor(props) {
-        super(props);
-        //this.sectionRef = React.createRef<HTMLDivElement>();
-        this.handleScroll = this.handleScroll.bind(this);
+export default function Projects(props : ProjectsProps) {
+    const scrollRef = useRef(null);
+    const enableDrag = () => {
+        document.querySelector<HTMLElement>('.projects-scroll').style.scrollSnapType = 'none';
+    }
+    const disableDrag = () => {
+        setTimeout(() => {
+            document.querySelector<HTMLElement>('.projects-scroll').style.scrollSnapType = '';
+        }, 200);
     }
 
-    componentDidMount() {
-        //this.sectionRef.current.scrollLeft = window.innerWidth;
-    }
+    useEffect(() => {
+        scrollRef.current.scrollLeft = window.innerWidth;
+        scrollRef.current.addEventListener('mousedown', enableDrag);
+        scrollRef.current.addEventListener('mouseup', disableDrag);
+    }, []);
 
-    handleScroll() {
-        if (this.sectionRef.current.scrollLeft == 0) {
-            this.sectionRef.current.scrollLeft += window.innerWidth * 3;
-        } else if (this.sectionRef.current.scrollLeft == window.innerWidth * 4) {
-            this.sectionRef.current.scrollLeft -= window.innerWidth * 3;
+    const handleScroll = () => {
+        let element = scrollRef.current;
+        if (element.scrollLeft == 0) {
+            element.scrollLeft += window.innerWidth * 3;
+        } else if (element.scrollLeft == window.innerWidth * 4) {
+            element.scrollLeft -= window.innerWidth * 3;
         }
     }
 
-    render() {
-        return (
-            <section className="projects">
-                <ScrollContainer
-                    className="projects-scroll"
-                    vertical={false}
-                    //ref={this.sectionRef}
-                    //onScroll={throttle(this.handleScroll, 5)}
-                >
-                    <ProjectCard project={projects[projects.length - 1]} mobileView={this.props.mobileView} darkMode={this.props.darkMode}  id={0}/>
-                    {projects.map((proj, idx) => (
-                        <ProjectCard project={proj} mobileView={this.props.mobileView} darkMode={this.props.darkMode}  id={idx + 1} key={idx}/>
-                    ))}
-                    <ProjectCard project={projects[0]} mobileView={this.props.mobileView} darkMode={this.props.darkMode}  id={projects.length + 1}/>
-                </ScrollContainer>
-            </section>
-        )
-    }
+    return (
+        <section className="projects">
+            <ScrollContainer
+                className="projects-scroll"
+                vertical={false}
+                innerRef={scrollRef}
+                onScroll={throttle(handleScroll, 7)}
+            >
+                <ProjectCard project={projects[projects.length - 1]} mobileView={props.mobileView} darkMode={props.darkMode}  id={0}/>
+                {projects.map((proj, idx) => (
+                    <ProjectCard project={proj} mobileView={props.mobileView} darkMode={props.darkMode}  id={idx + 1} key={idx}/>
+                ))}
+                <ProjectCard project={projects[0]} mobileView={props.mobileView} darkMode={props.darkMode}  id={projects.length + 1}/>
+            </ScrollContainer>
+        </section>
+    )
 }
-
-/* export const query = graphql`
-{
-    allProjectsJson {
-        edges {
-            node {
-                title,
-                subtitle
-                desc,
-                img,
-                link,
-                stack
-            }
-        }
-    }
-}
-`; */
-

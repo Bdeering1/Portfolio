@@ -8,10 +8,8 @@ $card-tilt: -3deg;
     height: 100%;
     display: flex;
     flex-direction: row;
-    //overflow-x: scroll;
+    overflow-x: scroll !important;
     scroll-snap-type: x mandatory;
-    //-ms-overflow-style: none;
-    //scrollbar-width: none;
 }
 .projects::-webkit-scrollbar {
     display: none;
@@ -23,7 +21,6 @@ $card-tilt: -3deg;
     display: flex;
     justify-content: center;
     scroll-snap-align: start;
-    //transform: rotate(90deg);
 }
 
 .project-grid {
