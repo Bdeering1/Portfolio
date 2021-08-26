@@ -1,5 +1,6 @@
 import React from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import LeftRightArrow from '../components/LeftRightArrow';
+import ArrowKeys from '../components/ArrowKeys';
 import JSXLogoFromStr from '../components/LightDarkLogos';
 
 interface ProjectCardProps {
@@ -42,6 +43,8 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
         return (
             <div className="project-wrapper">
                 <div className="project-grid">
+                    {/* <LeftRightArrow /> */}
+                    <ArrowKeys/>
                     {this.props.project.stack.map((item, idx) => (
                         JSXLogoFromStr(
                             item,
@@ -60,13 +63,6 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
                                 <h2 className="project-title" id={`front-title-${this.props.id}`}>{this.props.project.title}</h2>
                                 <span className="divider"/>
                                 <div className="img-wrapper">
-                                    {/* <StaticImage
-                                        src="../assets/images/visual-sorting-sm.png"
-                                        alt={this.props.project.title}
-                                        placeholder="blurred"
-                                        transformOptions={{fit: "cover", cropFocus: "bottom"}}
-                                        style={{height: "100%", maxHeight: "100%"}}
-                                    /> */}
                                     <img src={this.props.project.img} alt={this.props.project.title}/>
                                 </div>
                             </div>

@@ -42,28 +42,30 @@ html {
     height: var(--inner-height);
 }
 body {
-    height: 100%;
     margin: 0;
-    background-color: #FAFAFA;
 }
-#___gatsby {
-    height: 100%;
-}
-#gatsby-focus-wrapper {
-    height: 100%;
-}
+body,
+#___gatsby,
+#gatsby-focus-wrapper,
 main {
     height: 100%;
+}
+
+main {
+    outline: none;
     font-family: $font-title;
+    background-color: #FAFAFA;
     overflow: hidden auto;
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
-/* Hide scrollbar for Chrome, Safari and Opera */
-main::-webkit-scrollbar {
-    display: none;
-}
+
 section {
     height: 100%;
     scroll-snap-align: start;

@@ -22,3 +22,11 @@ function wheelOpt() {
 
     return supportsPassive ? { passive: false } : false;
 }
+
+export function noScrollFocus(e) {
+    var x = window.scrollX, y = window.scrollY;
+    e.focus({
+        preventScroll: true
+    });
+    window.scrollTo(x, y);
+}
