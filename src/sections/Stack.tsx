@@ -9,7 +9,7 @@ const stackArray = ["React", "Redux", "Node", "SASS", "Bootstrap", "Javascript",
 
 export default function Stack(props : StackProps) {
     return (
-        <section className="stack">
+        <section className="stack" id="stack">
             <div className="stack-bar"/>
             <div className="stack-wrapper">
                 {stackArray.map((item, idx) => (

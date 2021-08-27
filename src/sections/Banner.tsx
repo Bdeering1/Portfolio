@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Banner() {
     return (
-        <section className="banner">
+        <section className="banner" id="banner">
             <div className="banner-rect"/>
             <div className="svg-wrap">
                 <svg width="991" height="227" viewBox="0 0 991 227" fill="none" xmlns="http://www.w3.org/2000/svg">

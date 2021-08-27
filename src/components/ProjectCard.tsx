@@ -41,7 +41,7 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
     
     render() {
         return (
-            <div className="project-wrapper">
+            <div className="project-wrapper" data-scrollable={true}>
                 <div className="project-grid">
                     {/* <LeftRightArrow /> */}
                     <ArrowKeys/>

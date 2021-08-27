@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import ProjectCard from '../components/ProjectCard';
-import { noScrollFocus } from '../polyfill/scrolling';
 import { throttle } from 'lodash';
 
 const projects = require('../../data/projects.json');
@@ -16,7 +15,6 @@ export default function Projects(props : ProjectsProps) {
 
     useEffect(() => {
         scrollRef.current.scrollLeft = window.innerWidth;
-        noScrollFocus(scrollRef.current);
     }, []);
 
     const handleScroll = (e : any) => {
@@ -32,9 +30,10 @@ export default function Projects(props : ProjectsProps) {
     return (
         <section
             className="projects"
+            id="projects"
             ref={scrollRef}
             onScroll={throttle(handleScroll, 7)}
-            tabIndex={-1}
+            data-scrollable={true}
         >
                 <ProjectCard project={projects[projects.length - 1]} mobileView={props.mobileView} darkMode={props.darkMode}  id={0}/>
                 {projects.map((proj, idx) => (

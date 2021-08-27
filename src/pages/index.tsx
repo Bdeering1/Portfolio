@@ -3,7 +3,7 @@ import Banner from '../sections/Banner';
 import About from '../sections/About';
 import Stack from '../sections/Stack';
 import Projects from '../sections/Projects';
-import { disableScroll, enableScroll } from '../polyfill/scrolling';
+import { disableScroll, enableScroll, arrowKeyScroll } from '../polyfill/scrolling';
 import '../styles/index.scss';
 import { throttle } from 'lodash';
 
@@ -14,6 +14,7 @@ interface IndexPageState {
 }
 
 export default class IndexPage extends React.Component<{}, IndexPageState> {
+  ref: React.RefObject<HTMLElement>;
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +22,7 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
       darkMode: false,
       mobileView: false
     }
-    this.focusFix = this.focusFix.bind(this);
+    this.ref = createRef<HTMLElement>();
     this.updateWidthHeight = this.updateWidthHeight.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.checkColorPref = this.checkColorPref.bind(this);
@@ -31,8 +32,7 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.checkColorPref);
     window.addEventListener('resize', this.updateWidthHeight);
     window.addEventListener('orientationchange', this.updateWidthHeight);
-    window.addEventListener('keydown', () => {console.log(document.activeElement)});
-    this.focusFix();
+    arrowKeyScroll(this.ref.current);
     this.updateWidthHeight();
     this.checkColorPref();
   }
@@ -41,12 +41,6 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     window.removeEventListener('resize', this.updateWidthHeight);
     window.removeEventListener('orientationchange', this.updateWidthHeight);
     window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", this.checkColorPref);
-  }
-
-  focusFix() {
-    const gatsbyFocusWrapper = document.getElementById('gatsby-focus-wrapper');
-    if (gatsbyFocusWrapper) gatsbyFocusWrapper.removeAttribute('style');
-    gatsbyFocusWrapper.removeAttribute('tabIndex');
   }
 
   checkColorPref() {
@@ -70,14 +64,14 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
   handleScroll(e : any) {
     let element = e.target;
     if (element.scrollTop > this.state.height * 2.2) {
-      disableScroll(); //for project section only
-      setTimeout(() => enableScroll(), 800);
+      disableScroll('projects'); //for project section only
+      setTimeout(() => enableScroll('projects'), 800);
     }
   }
 
   render() {
     return (
-      <main onScroll={throttle(this.handleScroll, 100)}>
+      <main onScroll={throttle(this.handleScroll, 100)} ref={this.ref}>
         <Banner/>
         <About/>
         <Stack darkMode={this.state.darkMode}/>
