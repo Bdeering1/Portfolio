@@ -40,6 +40,8 @@ p {
 
 html {
     height: var(--inner-height);
+    background-color: #FAFAFA;
+    scroll-behavior: smooth;
 }
 body {
     margin: 0;
@@ -54,7 +56,6 @@ main {
 main {
     outline: none;
     font-family: $font-title;
-    background-color: #FAFAFA;
     overflow: hidden auto;
     scroll-snap-type: y mandatory;
     -ms-overflow-style: none;  /* IE and Edge */
@@ -70,9 +71,13 @@ section {
     height: 100%;
     scroll-snap-align: start;
 }
+.rect {
+    position: absolute;
+    background-color: $clr-primary;
+}
 
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #130330;
+    html {
+        background-color: $clr-dark;
     }
 }

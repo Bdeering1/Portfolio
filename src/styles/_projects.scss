@@ -43,7 +43,8 @@ $card-tilt: -3deg;
 .project-grid {
     height: 100%;
     width: 100%;
-    max-width: 1440px;
+    padding: 0 40px;
+    max-width: 1520px; //1440 + 40*2
     display: grid;
     grid-template: repeat(7, minmax(0, 1fr)) / repeat(7, minmax(0, 1fr));
     grid-gap: 20px;

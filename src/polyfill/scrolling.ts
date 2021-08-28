@@ -89,4 +89,6 @@ export function arrowKeyScroll(node : HTMLElement) {
             })
         }
     });
+
+    return scrollTop;
 }

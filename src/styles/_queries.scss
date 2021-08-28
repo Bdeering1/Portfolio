@@ -34,6 +34,9 @@
         svg {
             display: none;
         }
+        .project-grid {
+            padding: 0;
+        }
         .project-card .project-card-inner {
             .project-title {
                 grid-area: 2/1/4/11;

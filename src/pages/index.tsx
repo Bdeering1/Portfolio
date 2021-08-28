@@ -15,6 +15,7 @@ interface IndexPageState {
 
 export default class IndexPage extends React.Component<{}, IndexPageState> {
   ref: React.RefObject<HTMLElement>;
+  scrollArea: number[];
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +33,7 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.checkColorPref);
     window.addEventListener('resize', this.updateWidthHeight);
     window.addEventListener('orientationchange', this.updateWidthHeight);
-    arrowKeyScroll(this.ref.current);
+    this.scrollArea = arrowKeyScroll(this.ref.current);
     this.updateWidthHeight();
     this.checkColorPref();
   }
@@ -63,7 +64,14 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
 
   handleScroll(e : any) {
     let element = e.target;
-    if (element.scrollTop > this.state.height * 2.2) {
+    if (element.scrollTop === this.scrollArea[1]) {
+      document.querySelector<HTMLElement>('.about-rect').style.animationPlayState = 'running';
+      setTimeout(() => {
+        document.querySelector<HTMLElement>('.about-title').style.opacity = '1'
+        document.querySelector<HTMLElement>('.about-desc').style.opacity = '1'
+        document.querySelector<HTMLElement>('.stack-callout').style.opacity = '1'
+      }, 250);
+    } if (element.scrollTop > this.scrollArea[2]) {
       disableScroll('projects'); //for project section only
       setTimeout(() => enableScroll('projects'), 800);
     }

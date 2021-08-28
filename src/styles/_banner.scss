@@ -1,5 +1,5 @@
 .banner {
-    background-color: $clr-primary;
+    background-color: $clr-light;
     position: relative;
 
     .svg-wrap {
@@ -17,13 +17,17 @@
     path.r {
         fill: $clr-primary;
     }
+    path.y,
+    path.n {
+        fill: $clr-primary;
+        animation: pathLoad 500ms 1250ms forwards;
+    }
     .banner-rect {
-        width: 50%; 
         height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: $clr-light;
+        top: -100%;
+        right: 0;
+        width: 50%; 
+        animation: bannerLoad 1000ms 1000ms forwards;
     }
     .subtitle {
         color: $clr-light;
@@ -34,19 +38,36 @@
     }
 }
 
+@keyframes bannerLoad {
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes pathLoad {
+    100% {
+        fill: $clr-light;
+    }
+}
+
 @media (prefers-color-scheme: dark) {
     .banner {
-        background-color: $clr-dark;
+        background-color: $clr-primary;
         path.b,
         path.r {
             fill: $clr-dark;
         }
         path.y,
         path.n {
-            fill: $clr-primary;
+            fill: $clr-dark;
         }
         .banner-rect {
-            background-color: $clr-primary;
+            background-color: $clr-dark;
+        }
+    }
+    @keyframes  pathLoad {
+        100% {
+            fill: $clr-primary;
         }
     }
 }
