@@ -1,8 +1,8 @@
 {
-  "name": "portfolo",
+  "name": "Portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "portfolo",
+  "description": "Bryn Deering's Portfolio",
   "author": "Bryn Deering",
   "keywords": [
     "gatsby"
@@ -29,9 +29,11 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-indiana-drag-scroll": "^2.0.1",
+    "react-spring": "^9.2.4",
     "sass": "^1.37.0"
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.2",
     "gh-pages": "^3.2.3"
   }
 }

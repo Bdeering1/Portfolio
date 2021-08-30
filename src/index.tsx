@@ -1,11 +1,13 @@
 import React, { createRef } from 'react';
-import Banner from '../sections/Banner';
-import About from '../sections/About';
-import Stack from '../sections/Stack';
-import Projects from '../sections/Projects';
-import { disableScroll, enableScroll, arrowKeyScroll } from '../polyfill/scrolling';
-import '../styles/index.scss';
+import { Helmet } from 'react-helmet';
+import Banner from './sections/Banner';
+import About from './sections/About';
+import Stack from './sections/Stack';
+import Projects from './sections/Projects';
+
+import { disableScroll, enableScroll, arrowKeyScroll } from './utils/scrolling';
 import { throttle } from 'lodash';
+import './styles/index.scss';
 
 interface IndexPageState {
   height : number,
@@ -13,7 +15,7 @@ interface IndexPageState {
   mobileView : boolean
 }
 
-export default class IndexPage extends React.Component<{}, IndexPageState> {
+class IndexPage extends React.Component<null, IndexPageState> {
   ref: React.RefObject<HTMLElement>;
   scrollArea: number[];
   constructor(props) {
@@ -33,6 +35,8 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", this.checkColorPref);
     window.addEventListener('resize', this.updateWidthHeight);
     window.addEventListener('orientationchange', this.updateWidthHeight);
+    window.onblur = () => {document.title = 'Bryn Deering'};
+    window.onfocus = () => {document.title = 'Portfolio'};
     this.scrollArea = arrowKeyScroll(this.ref.current);
     this.updateWidthHeight();
     this.checkColorPref();
@@ -80,6 +84,11 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
   render() {
     return (
       <main onScroll={throttle(this.handleScroll, 100)} ref={this.ref}>
+        <Helmet>
+          <title>Portfolio</title>
+          <meta name="description" content="Bryn Deering's Portfolio"></meta>
+          <meta name="keywords" content="Bryn Deering, Portfolio, Front End Developer, Web Projects"></meta>
+        </Helmet>
         <Banner/>
         <About/>
         <Stack darkMode={this.state.darkMode}/>
@@ -88,3 +97,5 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
     )
   }
 }
+
+export default IndexPage;

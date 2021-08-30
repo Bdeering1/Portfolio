@@ -15,6 +15,7 @@ export default function HTML(props) {
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
+        {/* https://dev.to/zakirsajib/adding-loader-spinner-in-gatsby-site-n4g */}
         <div
               key={`loader`}
               id="___loader"

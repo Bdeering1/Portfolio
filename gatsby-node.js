@@ -2,6 +2,6 @@ exports.createPages = ({ actions: { createPage }}) => {
 
     createPage({
         path: '/',
-        component: require.resolve('./src/pages/index.tsx')
+        component: require.resolve('./src/index.tsx')
     })
 }

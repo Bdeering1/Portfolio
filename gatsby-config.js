@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: "/Portfolio",
   siteMetadata: {
     siteUrl: "https://bdeering1.github.io/Portfolio",
-    title: "portfolo",
+    title: "Portfolo",
   },
   plugins: [
     "gatsby-plugin-sass",
