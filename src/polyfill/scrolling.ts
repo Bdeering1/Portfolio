@@ -1,5 +1,6 @@
 /* Enable/Disable Scrolling
 -used to fix unwanted scrolling behaviour when moving between multiple scroll containers
+source: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
 */
 export function disableScroll(id : string) {
     document.getElementById(id).addEventListener('scroll', preventDefault, false); // older FF
@@ -29,11 +30,11 @@ function wheelOpt() {
 -designed to work for any number of sections with horizontal scrolling
 -assumes mandatory scroll snap
 */
-export function arrowKeyScroll(node : HTMLElement) {
+export function arrowKeyScroll(el : HTMLElement) {
     let scrollTop : number[] = []; //array for vertical scroll container
     let scrollLeft : number[][] = []; //array for horizontal scroll containers (if any)
-    for (let i = 0; i < node.children.length; i++) {
-        let section = node.children[i];
+    for (let i = 0; i < el.children.length; i++) {
+        let section = el.children[i];
         scrollTop[i] = Math.round(section.getBoundingClientRect().top);
         scrollLeft[i] = [null];
         if (section.querySelector('[data-scrollable]')) {
@@ -46,14 +47,14 @@ export function arrowKeyScroll(node : HTMLElement) {
     window.addEventListener('keydown', (e) => {
         let scrollArea : number;
         for (let i = 0; i < scrollTop.length; i++) { //determine user's current vertical scroll area
-            if (node.scrollTop == scrollTop[i]) {
+            if (el.scrollTop == scrollTop[i]) {
                 scrollArea = i;
             }
         }
         if (scrollArea === undefined) return;
 
         if (e.code === "ArrowLeft") {
-            let section = node.children[scrollArea];
+            let section = el.children[scrollArea];
             if (!section.querySelector('[data-scrollable]') || section.scrollLeft === 0) return;
             for (let i = 0; i < scrollLeft[scrollArea].length; i++) {
                 if (section.scrollLeft === scrollLeft[scrollArea][i]) {
@@ -64,7 +65,7 @@ export function arrowKeyScroll(node : HTMLElement) {
                 }
             }
         } else if (e.code === "ArrowRight") {
-            let section = node.children[scrollArea];
+            let section = el.children[scrollArea];
             if (!section.querySelector('[data-scrollable]')
             || section.scrollLeft === scrollLeft[scrollArea][scrollLeft[scrollArea].length - 1]) return;
             for (let i = 0; i < scrollLeft[scrollArea].length; i++) {
@@ -77,18 +78,44 @@ export function arrowKeyScroll(node : HTMLElement) {
             }
         } else if (e.code === "ArrowUp") {
             if (scrollArea === 0) return;
-            node.scrollTo({
+            el.scrollTo({
                 top: scrollTop[scrollArea - 1],
                 behavior: 'smooth'
             })
         } else if (e.code === "ArrowDown") {
             if (scrollArea === scrollTop[scrollTop.length] - 1) return;
-            node.scrollTo({
+            el.scrollTo({
                 top: scrollTop[scrollArea + 1],
                 behavior: 'smooth'
             })
+            //scrollElementTo(el, {y: scrollTop[scrollArea + 1]});
         }
     });
 
     return scrollTop;
+}
+
+interface locX {
+    x: number
+}
+interface locY {
+    y: number
+}
+async function scrollElementTo(el : HTMLElement, loc : locX | locY) {
+    let scrollIncrement : number;
+    if ((loc as locX).x) {
+        while(el.scrollLeft !== (loc as locX).x) {
+
+        }
+    } else {
+        scrollIncrement = el.scrollTop < (loc as locY).y ? 2 : -2;
+        while(el.scrollTop !== (loc as locY).y) {
+            el.scrollBy(0, scrollIncrement);
+            await sleep(1);
+        }
+    }
+}
+
+function sleep(ms :  number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

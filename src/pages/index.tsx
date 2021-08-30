@@ -72,7 +72,7 @@ export default class IndexPage extends React.Component<{}, IndexPageState> {
         document.querySelector<HTMLElement>('.stack-callout').style.opacity = '1'
       }, 250);
     } if (element.scrollTop > this.scrollArea[2]) {
-      disableScroll('projects'); //for project section only
+      disableScroll('projects');
       setTimeout(() => enableScroll('projects'), 800);
     }
   }
