@@ -1,22 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import ProjectCard from '../components/ProjectCard';
 import { throttle } from 'lodash';
 
 const projects = require('../../data/projects.json');
 
 interface ProjectsProps {
-    height : number,
     mobileView : boolean,
     darkMode : boolean,
 }
 
 export default function Projects(props : ProjectsProps) {
-    const scrollRef = useRef(null);
-
-    useEffect(() => {
-        scrollRef.current.scrollLeft = window.innerWidth;
-    }, []);
-
     const handleScroll = (e : any) => {
         let element = e.target;
         if (!element) return;
@@ -31,7 +24,6 @@ export default function Projects(props : ProjectsProps) {
         <section
             className="projects"
             id="projects"
-            ref={scrollRef}
             onScroll={throttle(handleScroll, 7)}
             data-scrollable={true}
         >
