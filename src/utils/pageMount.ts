@@ -1,6 +1,4 @@
-import { arrowKeyScroll, pauseScroll } from "./scrolling";
-
-export default function pageMount(el : HTMLElement, functions : any) {
+export default function pageMount(functions : any) {
 
     function updateDimensions() {
         setTimeout(() => { //fixes issue with rotation on mobile
@@ -20,10 +18,8 @@ export default function pageMount(el : HTMLElement, functions : any) {
     window.onblur = () => {document.title = 'Bryn Deering'};
     window.onfocus = () => {document.title = 'Portfolio'};
 
-    functions.setScrollAreas(arrowKeyScroll(el));
     updateDimensions();
     updateTheme();
-    pauseScroll('main', 2000);
 
     return function pageUnmount() {
         window.removeEventListener('resize', updateDimensions);

@@ -1,26 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Helmet } from 'react-helmet';
+
+import pageMount from './utils/pageMount';
+import './styles/index.scss';
+
+import ScrollContainer from './components/ScrollContainer';
 import Banner from './sections/Banner';
 import About from './sections/About';
 import Stack from './sections/Stack';
 import Projects from './sections/Projects';
 
-import pageMount from './utils/pageMount';
-import { handleScroll } from './utils/scrolling';
-import { throttle } from 'lodash';
-import './styles/index.scss';
-
 
 function IndexPage() {
-  const ref = useRef(null);
   const [darkMode, setDarkMode] = useState(false);
   const [mobileView, setMobileView] = useState(false);
-  const [scrollAreas, setScrollAreas] = useState([]);
-
 
   useEffect(()  => {
-    const unMount = pageMount(ref.current, { setDarkMode, setMobileView, setScrollAreas });
-    return(unMount);
+    const removeListeners = pageMount({ setDarkMode, setMobileView });
+    return removeListeners;
   }, [])
 
   return (
@@ -31,12 +28,12 @@ function IndexPage() {
           <meta name="keywords" content="Bryn Deering, Portfolio, Front End Developer, Web Projects"></meta>
       </Helmet>
 
-      <main onScroll={throttle((e) => handleScroll(e, scrollAreas), 100)} ref={ref} id="main">
+      <ScrollContainer>
         <Banner/>
         <About/>
         <Stack darkMode={darkMode}/>
         <Projects mobileView={mobileView} darkMode={darkMode}/>
-      </main>
+      </ScrollContainer>
 
     </>
   )
