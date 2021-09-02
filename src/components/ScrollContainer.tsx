@@ -2,9 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { throttle } from 'lodash';
 
+import { pauseScroll } from '../utils/scrolling';
+
 export default function ScrollContainer( props : any ) {
     const ref = useRef(null);
-    const [scrollAreas] = useState([]);
+    let scrollAreas : number[] = [];
 
 
     useEffect(() => {
@@ -26,43 +28,6 @@ export default function ScrollContainer( props : any ) {
         } if (el.scrollTop > scrollAreas[2]) {
             pauseScroll('projects', 800);
         }
-    }
-    
-    /* Enable/Disable Scrolling
-    -used to fix unwanted scrolling behaviour when moving between multiple scroll containers
-    source: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
-    */
-    function disableScroll(el : HTMLElement) {
-        el.addEventListener('scroll', preventDefault, false); // older FF
-        el.addEventListener('wheel', preventDefault, wheelOpt()); // modern desktop
-    }
-    function enableScroll(el : HTMLElement) {
-        el.removeEventListener('scroll', preventDefault, false);
-        el.removeEventListener('wheel', preventDefault, false);
-    }
-    function pauseScroll(id : string, delay : number) {
-        let el = document.getElementById(id);
-        el.setAttribute('data-paused', '');
-        disableScroll(el);
-        setTimeout(() => {
-            enableScroll(el);
-            el.removeAttribute('data-paused');
-        }, delay);
-    }
-    
-    function preventDefault(e) {
-        e.preventDefault();
-    }
-    function wheelOpt() {
-        // modern Chrome requires { passive: false } when adding event
-        var supportsPassive = false;
-        try {
-            window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-                get: function () { supportsPassive = true; } 
-            }));
-        } catch(e) {}
-    
-        return supportsPassive ? { passive: false } : false;
     }
 
     function scrollInit() {
@@ -150,12 +115,11 @@ export default function ScrollContainer( props : any ) {
                     top: scrollAreas[scrollArea + 1],
                     behavior: 'smooth'
                 })
-                //scrollElementTo(el, {y: scrollAreas[scrollArea + 1]});
             }
         });
     }
 
-/*     const { scroll } = useSpring({
+    const { scroll } = useSpring({
         scroll: 1000,
         from: { scroll: 0},
         reset: true,
@@ -163,7 +127,7 @@ export default function ScrollContainer( props : any ) {
         //delay: 400,
         //config: config.molasses,
         //onRest: () => set(!flip),
-    }) */
+    })
 
 
     return <animated.main
