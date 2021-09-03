@@ -57,7 +57,7 @@ main {
     outline: none;
     font-family: $font-title;
     overflow: hidden auto;
-    scroll-snap-type: y mandatory;
+    //scroll-snap-type: y mandatory;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 
