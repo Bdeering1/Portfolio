@@ -10,10 +10,9 @@ $card-tilt: -3deg;
     display: flex;
     flex-direction: row;
     overflow-x: scroll !important;
-    //scroll-snap-type: x mandatory;
+    scroll-snap-type: x mandatory;
     -ms-overflow-style: none;
     scrollbar-width: none;
-    //cursor: url('../../static/images/cursor.svg'), auto;
 
     &::-webkit-scrollbar {
         display: none;
@@ -39,6 +38,13 @@ $card-tilt: -3deg;
     justify-content: center;
     scroll-snap-align: start;
 }
+/* Allows scroll bounce animation */
+/* #project-0 {
+    margin-left: 100px;
+}
+#project-4 {
+    margin-right: 100px;
+} */
 
 .project-grid {
     height: 100%;

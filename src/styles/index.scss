@@ -1,9 +1,9 @@
-@import 'queries';
 @import 'theme';
 @import 'banner';
 @import 'about';
 @import 'stack';
 @import 'projects';
+@import 'queries';
 
 @font-face {
     font-family: 'Newake';
@@ -42,9 +42,12 @@ html {
     height: var(--inner-height);
     background-color: #FAFAFA;
     scroll-behavior: smooth;
+    cursor: url('../../static/images/cursor.svg'), auto;
+    overflow: none
 }
 body {
     margin: 0;
+    overflow: none;
 }
 body,
 #___gatsby,
@@ -54,10 +57,9 @@ main {
 }
 
 main {
-    outline: none;
     font-family: $font-title;
     overflow: hidden auto;
-    //scroll-snap-type: y mandatory;
+    scroll-snap-type: y mandatory;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 
@@ -70,6 +72,9 @@ main {
 section {
     height: 100%;
     scroll-snap-align: start;
+    &:last-child {
+        margin-bottom: 100px;
+    }
 }
 .rect {
     position: absolute;

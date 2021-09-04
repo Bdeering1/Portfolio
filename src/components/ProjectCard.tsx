@@ -1,5 +1,4 @@
 import React from 'react';
-import LeftRightArrow from '../components/LeftRightArrow';
 import ArrowKeys from '../components/ArrowKeys';
 import JSXLogoFromStr from '../components/LightDarkLogos';
 
@@ -41,7 +40,7 @@ export default class ProjectCard extends React.Component<ProjectCardProps, Proje
     
     render() {
         return (
-            <div className="project-wrapper" data-scrollable={true}>
+            <div className="project-wrapper" data-scrollable={true} id={`project-${this.props.id}`}>
                 <div className="project-grid">
                     {/* <LeftRightArrow /> */}
                     <ArrowKeys/>

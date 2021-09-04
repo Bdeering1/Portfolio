@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { throttle } from 'lodash';
 
@@ -13,15 +13,19 @@ interface ProjectsProps {
 }
 
 export default function Projects(props : ProjectsProps) {
+    const ref = useRef(null);
     const [blinkScroll, setBlinkScroll] = useState(false);
     const [scrollX,  setScrollX] = useState(0);
 
     const { scroll } = useSpring({
         scroll: scrollX,
         immediate: blinkScroll,
-        //from: {scroll: ref.current ? ref.current.scrollLeft : 0}
-        //reset: true,
-        onRest: () => {blinkScroll ? setBlinkScroll(false) : null}
+        config: {tension: 80, friction: 12},
+        onRest: () => {
+            if (blinkScroll) setBlinkScroll(false);
+            ref.current.style.scrollSnapType = "x mandatory";
+
+        }
     })
 
     useEffect(() => {
@@ -47,6 +51,7 @@ export default function Projects(props : ProjectsProps) {
             onScroll={throttle(handleScroll, 7)}
             data-scroll-x={true}
             scrollLeft={scroll}
+            ref={ref}
         >
                 <ProjectCard project={projects[projects.length - 1]} mobileView={props.mobileView} darkMode={props.darkMode}  id={0}/>
                 {projects.map((proj, idx) => (

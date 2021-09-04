@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useSpring, animated, config } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import { throttle } from 'lodash';
 
 import { pauseScroll } from '../utils/scrolling';
@@ -15,10 +15,12 @@ export default function ScrollContainer( props : any ) {
     }, [])
 
     function scrollInit() {
+        const el = ref.current;
+
+        /* Initialize scrollDestX array */
         for (let i = 0; i < props.children.length; i++) {
             setScrollDestX(arr => ([...arr, null]));
         }
-        const el = ref.current;
 
         let scrollPtsY : number[] = []; /* vertical scroll containers */
         let scrollPtsX : number[][] = []; /* horizontal scroll containers (if any) */
@@ -33,9 +35,10 @@ export default function ScrollContainer( props : any ) {
                 }
             }
         }
+        
         /* additional elements are added on either to create 'infinite' scroll effect,
              this ensures scrolling starts at the intended first element */
-        document.getElementById('projects').scrollLeft = window.innerWidth;
+        document.getElementById('projects').scrollLeft = scrollPtsX[3][1]; //Safari seems to calculate scroll with margin taken into account
         setScrollDestX(arr => [...arr.slice(0,3), window.innerWidth, ...arr.slice(3+1)]);
     
         /* Scroll Events
@@ -105,27 +108,23 @@ export default function ScrollContainer( props : any ) {
                 let section = el.children[scrollAreaY];
                 for (let i = loopStart; i < loopEnd; i++) {
                     if (section.scrollLeft === scrollPtsX[scrollAreaY][i]) {
+                        section.style.scrollSnapType = "none";
                         let scrollX = scrollPtsX[scrollAreaY][i + (e.code === "ArrowLeft" ? -1 : 1)];
                         setScrollDestX(arr => [...arr.slice(0,scrollAreaY), scrollX, ...arr.slice(scrollAreaY+1)]);
-                        /* section.scrollTo({
-                            left: scrollPtsX[scrollAreaY][i + (e.code === "ArrowLeft" ? -1 : 1)],
-                            behavior: 'smooth'
-                        }); */
                         break;
                     }
                 }
             } else if (scrollDir === "vertical") {
-                ref.current.style.scrollSnapType = "none";
+                el.style.scrollSnapType = "none";
                 setScrollDest(scrollPtsY[scrollAreaY + (e.code === "ArrowUp" ? -1 : 1)]);
-                //ref.current.style.scrollSnapType = "y mandatory";
             }
         });
     }
 
     const { scroll } = useSpring({
         scroll: scrollDest,
-        //reset: true,
-        //onScrollEnd: ref.current ? ref.current.style.scrollSnapType = "y mandatory" : null
+        config: {tension: 170, friction: 20},
+        onRest: () => {ref.current.style.scrollSnapType = "y mandatory"}
     })
 
 

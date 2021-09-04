@@ -1,12 +1,14 @@
 .about-wrapper {
+    $margin: 100px;
     position: relative;
+    margin: $margin 0;
     scroll-snap-stop: always;
 
     .about-rect {
         grid-row: none;
-        height: 100%;
+        height: calc(100% + #{2 * $margin});
         width: 100vw;
-        bottom: 0;
+        bottom: -$margin;
         left: 50%;
         animation: aboutSwipe 1000ms forwards paused;
     }
