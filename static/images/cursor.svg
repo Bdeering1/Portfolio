@@ -1,19 +1,7 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_i)">
-<circle cx="16" cy="16" r="16" fill="#F5F5F5" fill-opacity="0.25"/>
-</g>
-<circle cx="16" cy="16" r="15.5" stroke="#130330" stroke-opacity="0.5"/>
-<defs>
-<filter id="filter0_i" x="0" y="0" width="32" height="32" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="4" operator="erode" in="SourceAlpha" result="effect1_innerShadow"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="4"/>
-<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.0745098 0 0 0 0 0.0117647 0 0 0 0 0.188235 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="shape" result="effect1_innerShadow"/>
-</filter>
-</defs>
+<svg width="21" height="25" viewBox="0 0 21 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="path-1-inside-1" fill="white">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.0705 14.9953L1.41025 2.6748L2.75 24.9953L20.0705 14.9953ZM20.0089 15.0307L10.3421 18.1484L2.80887 24.9611L20.0089 15.0307Z"/>
+</mask>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.0705 14.9953L1.41025 2.6748L2.75 24.9953L20.0705 14.9953ZM20.0089 15.0307L10.3421 18.1484L2.80887 24.9611L20.0089 15.0307Z" fill="#130330"/>
+<path d="M1.41025 2.6748L1.96124 1.84029L0.29222 0.738313L0.41205 2.73472L1.41025 2.6748ZM20.0705 14.9953L20.5705 15.8613L21.9718 15.0523L20.6215 14.1608L20.0705 14.9953ZM2.75 24.9953L1.7518 25.0552L1.84874 26.6704L3.25 25.8613L2.75 24.9953ZM10.3421 18.1484L10.0351 17.1967L9.83069 17.2626L9.67136 17.4067L10.3421 18.1484ZM20.0089 15.0307L20.5089 15.8967L19.7019 14.0789L20.0089 15.0307ZM2.80887 24.9611L2.13812 24.2194L3.30887 25.8271L2.80887 24.9611ZM0.859264 3.50932L19.5195 15.8298L20.6215 14.1608L1.96124 1.84029L0.859264 3.50932ZM3.7482 24.9354L2.40846 2.61489L0.41205 2.73472L1.7518 25.0552L3.7482 24.9354ZM19.5705 14.1293L2.25 24.1293L3.25 25.8613L20.5705 15.8613L19.5705 14.1293ZM10.6491 19.1001L20.3158 15.9824L19.7019 14.0789L10.0351 17.1967L10.6491 19.1001ZM3.47961 25.7028L11.0128 18.8901L9.67136 17.4067L2.13812 24.2194L3.47961 25.7028ZM19.5089 14.1646L2.30887 24.0951L3.30887 25.8271L20.5089 15.8967L19.5089 14.1646Z" fill="#FAFAFA" mask="url(#path-1-inside-1)"/>
 </svg>

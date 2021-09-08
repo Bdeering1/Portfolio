@@ -3,6 +3,7 @@
     source: https://stackoverflow.com/questions/4770025/how-to-disable-scrolling-temporarily
 */
 export function pauseScroll(id : string, delay : number) {
+    console.log(`pausing ${id} for ${delay}`);
     let el = document.getElementById(id);
     el.setAttribute('data-paused', '');
     el.addEventListener('scroll', preventDefault, false); // older FF

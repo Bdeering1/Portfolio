@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { throttle } from 'lodash';
+import { debounce } from 'lodash';
 
 import ProjectCard from '../components/ProjectCard';
 
@@ -9,12 +9,13 @@ const projects = require('../../data/projects.json');
 interface ProjectsProps {
     mobileView : boolean,
     darkMode : boolean,
-    scrollX? : number
+    scrollX? : number,
+    scrollPtsX?: number[]
 }
 
 export default function Projects(props : ProjectsProps) {
     const ref = useRef(null);
-    const [blinkScroll, setBlinkScroll] = useState(false);
+    const [blinkScroll, setBlinkScroll] = useState(true);
     const [scrollX,  setScrollX] = useState(0);
 
     const { scroll } = useSpring({
@@ -22,42 +23,56 @@ export default function Projects(props : ProjectsProps) {
         immediate: blinkScroll,
         config: {tension: 80, friction: 12},
         onRest: () => {
-            if (blinkScroll) setBlinkScroll(false);
+            console.log("on rest activating");
+            //if (blinkScroll) setBlinkScroll(false);
             ref.current.style.scrollSnapType = "x mandatory";
-
         }
     })
 
     useEffect(() => {
         setScrollX(props.scrollX);
-    }, [props.scrollX])
+        console.log(`setting scrollX to: ${props.scrollX}`);
+    }, [props.scrollX]);
 
-    const handleScroll = (e : any) => {
+    const handleScroll = debounce((e : any) => {
         let el = e.target;
         if (!el) return;
-        if (el.scrollLeft == 0) {
+        //console.log(`scrolling from: ${el.scrollLeft}`);
+        console.log("SCROLL END");
+        if (el.scrollLeft === props.scrollPtsX[0] ) {
+            console.log("inifite scroll left (100)");
             setBlinkScroll(true);
-            setScrollX(el.scrollLeft + window.innerWidth * 3);
-        } else if (el.scrollLeft == window.innerWidth * 4) {
+            setScrollX(props.scrollPtsX[props.scrollPtsX.length - 2]);
+            setBlinkScroll(false);
+        } else if (el.scrollLeft === props.scrollPtsX[props.scrollPtsX.length - 1]) {
+            console.log(`inifite scroll right (${el.scrollLeft})`);
             setBlinkScroll(true);
-            setScrollX(el.scrollLeft - window.innerWidth * 3);
+            setScrollX(props.scrollPtsX[1]);
+            setBlinkScroll(false);
+            console.log("scrollX: " + scrollX + " !")
         }
-    }
+        else {
+            console.log(`scroll end setter (${el.scrollLeft})`);
+            setBlinkScroll(true);
+            setScrollX(el.scrollLeft);
+            setBlinkScroll(false);
+        }
+    }, 50);
 
     return (
         <animated.section
             className="projects"
             id="projects"
-            onScroll={throttle(handleScroll, 7)}
+            onScroll={handleScroll}
             data-scroll-x={true}
             scrollLeft={scroll}
             ref={ref}
         >
-                <ProjectCard project={projects[projects.length - 1]} mobileView={props.mobileView} darkMode={props.darkMode}  id={0}/>
-                {projects.map((proj, idx) => (
-                    <ProjectCard project={proj} mobileView={props.mobileView} darkMode={props.darkMode}  id={idx + 1} key={idx}/>
-                ))}
-                <ProjectCard project={projects[0]} mobileView={props.mobileView} darkMode={props.darkMode}  id={projects.length + 1}/>
+            <ProjectCard project={projects[projects.length - 1]} mobileView={props.mobileView} darkMode={props.darkMode}  id={0}/>
+            {projects.map((proj, idx) => (
+                <ProjectCard project={proj} mobileView={props.mobileView} darkMode={props.darkMode}  id={idx + 1} key={idx}/>
+            ))}
+            <ProjectCard project={projects[0]} mobileView={props.mobileView} darkMode={props.darkMode}  id={projects.length + 1}/>
         </animated.section>
     )
 }

@@ -43,11 +43,10 @@ html {
     background-color: #FAFAFA;
     scroll-behavior: smooth;
     cursor: url('../../static/images/cursor.svg'), auto;
-    overflow: none
+    //overflow: hidden;
 }
 body {
     margin: 0;
-    overflow: none;
 }
 body,
 #___gatsby,
@@ -73,7 +72,7 @@ section {
     height: 100%;
     scroll-snap-align: start;
     &:last-child {
-        margin-bottom: 100px;
+        margin-bottom: $scroll-margin;
     }
 }
 .rect {
