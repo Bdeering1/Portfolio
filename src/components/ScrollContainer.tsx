@@ -40,10 +40,8 @@ export default function ScrollContainer( props : any ) {
                 }
                 section.style.scrollSnapType = "";
                 setScrollDestX(arr => [...arr.slice(0,i), scrollPtsX[i][0], ...arr.slice(i+1)]);
-                console.log(`scrollPtsX[${i}] = ${scrollPtsX[i]}`);
             }
         }
-        console.log(scrollPtsY);
 
         /* additional elements are added on either to create 'infinite' scroll effect,
              this ensures scrolling starts at the intended first element */
@@ -85,7 +83,6 @@ export default function ScrollContainer( props : any ) {
                     scrollAreaY = i;
                 }
             }
-            console.log(`scrollTop: ${el.scrollTop} (${scrollAreaY})`);
             /* prevents weird behaviour on partial scroll */
             if (scrollAreaY === undefined) return;
     
@@ -123,19 +120,15 @@ export default function ScrollContainer( props : any ) {
                     if (section.scrollLeft === scrollPtsX[scrollAreaY][i]) {
                         section.style.scrollSnapType = "none";
                         let scrollX = scrollPtsX[scrollAreaY][i + (e.code === "ArrowLeft" ? -1 : 1)];
-                        //console.log([...scrollDestX.slice(0,scrollAreaY), scrollX, ...scrollDestX.slice(scrollAreaY+1)]);
-                        //console.log(`scrolling from: ${scrollDestX[scrollAreaY]} to: ${scrollX}`);
                         setScrollDestX(arr => [...arr.slice(0,scrollAreaY), scrollX, ...arr.slice(scrollAreaY+1)]);
-                        console.log(scrollDestX);
                         break;
                     }
                 }
             } else if (scrollDir === "vertical") {
                 el.style.scrollSnapType = "none";
-                console.log("scrolling Y to: " + scrollPtsY[scrollAreaY + (e.code === "ArrowUp" ? -1 : 1)]);
                 setScrollDestY(scrollPtsY[scrollAreaY + (e.code === "ArrowUp" ? -1 : 1)]);
             }
-        }, 500));
+        }, 900));
 
         return scrollPtsX;
     }
@@ -143,7 +136,6 @@ export default function ScrollContainer( props : any ) {
     const { scroll } = useSpring({
         scroll: scrollDestY,
         immediate: blinkScroll,
-        config: {tension: 170, friction: 20},
         onRest: () => {ref.current.style.scrollSnapType = "y mandatory"}
     })
 

@@ -21,9 +21,7 @@ export default function Projects(props : ProjectsProps) {
     const { scroll } = useSpring({
         scroll: scrollX,
         immediate: blinkScroll,
-        config: {tension: 80, friction: 12},
         onRest: () => {
-            console.log("on rest activating");
             //if (blinkScroll) setBlinkScroll(false);
             ref.current.style.scrollSnapType = "x mandatory";
         }
@@ -31,28 +29,21 @@ export default function Projects(props : ProjectsProps) {
 
     useEffect(() => {
         setScrollX(props.scrollX);
-        console.log(`setting scrollX to: ${props.scrollX}`);
     }, [props.scrollX]);
 
     const handleScroll = debounce((e : any) => {
         let el = e.target;
         if (!el) return;
-        //console.log(`scrolling from: ${el.scrollLeft}`);
-        console.log("SCROLL END");
         if (el.scrollLeft === props.scrollPtsX[0] ) {
-            console.log("inifite scroll left (100)");
             setBlinkScroll(true);
             setScrollX(props.scrollPtsX[props.scrollPtsX.length - 2]);
             setBlinkScroll(false);
         } else if (el.scrollLeft === props.scrollPtsX[props.scrollPtsX.length - 1]) {
-            console.log(`inifite scroll right (${el.scrollLeft})`);
             setBlinkScroll(true);
             setScrollX(props.scrollPtsX[1]);
             setBlinkScroll(false);
-            console.log("scrollX: " + scrollX + " !")
         }
         else {
-            console.log(`scroll end setter (${el.scrollLeft})`);
             setBlinkScroll(true);
             setScrollX(el.scrollLeft);
             setBlinkScroll(false);
