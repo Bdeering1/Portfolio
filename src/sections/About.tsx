@@ -3,7 +3,7 @@ const about = require('../../data/about.json');
 
 export default function About() {
     return (
-        <section className="about-wrapper" id="about">
+        <section className="about" id="about">
             <div className="rect about-rect"/>
             <div className="about-inner">
                 <h1 className="about-title">ABOUT</h1>

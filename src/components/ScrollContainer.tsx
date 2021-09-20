@@ -52,7 +52,7 @@ export default function ScrollContainer( props : any ) {
             -handles scroll restrictions on load and scroll behaviour fixes
             -triggers on react-spring scrolling
         */
-        el.addEventListener("scroll", debounce(() => {
+        el.addEventListener('scroll', debounce(() => {
             if (!el.hasAttribute('data-scrolled') && el.scrollTop === scrollPtsY[1]) {
                 document.querySelector<HTMLElement>('.about-rect').style.animationPlayState = 'running';
                 pauseScroll('main', 1000);

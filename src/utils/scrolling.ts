@@ -21,7 +21,7 @@ function wheelOpt() {
     // modern Chrome requires { passive: false } when adding event
     var supportsPassive = false;
     try {
-        window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+        window.addEventListener('test', null, Object.defineProperty({}, 'passive', {
             get: function () { supportsPassive = true; } 
         }));
     } catch(e) {}

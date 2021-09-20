@@ -1,4 +1,4 @@
-.about-wrapper {
+.about {
     $margin: 100px;
     position: relative;
     margin: $margin 0;
@@ -64,7 +64,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    .about-wrapper {
+    .about {
         .about-rect {
             left: -50%;
         }
