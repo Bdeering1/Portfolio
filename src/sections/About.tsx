@@ -1,18 +1,30 @@
 import React from 'react';
+import JSXLogoFromStr from '../components/LightDarkLogos';
 const about = require('../../data/about.json');
 
-export default function About() {
-    return (
-        <section className="about" id="about">
-            <div className="rect about-rect"/>
-            <div className="about-inner">
-                <h1 className="about-title">ABOUT</h1>
-                <p className="about-desc body-text-lg">{about.desc}</p>
-                <div className="stack-callout body-text-lg">
-                    <p className="stack-callout-text">Check out my stack below!</p>
-                    <p className="stack-callout-arrow">v</p>
-                </div>
-            </div>
-        </section>
-    )
+export default function About(props: { darkMode: boolean }) {
+  return (
+    <section className="about" id="about">
+      <div className="rect about-rect" />
+      <div className="about-inner">
+        <h1 className="about-title">ABOUT</h1>
+        <p className="about-desc body-text-lg">{about.desc}</p>
+        <div className="stack-callout body-text-lg">
+          <p className="stack-callout-text">Check out my stack below!</p>
+          <p className="stack-callout-arrow">v</p>
+        </div>
+        <div className="socials-wrapper">
+          <a
+            href="https://www.linkedin.com/in/bryn-deering-172388197/"
+            rel="noopener noreferrer"
+          >
+            {JSXLogoFromStr('Linkedin', props.darkMode)}
+          </a>
+          <a href="https://github.com/Bdeering1" rel="noopener noreferrer">
+            {JSXLogoFromStr('Github', props.darkMode)}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
