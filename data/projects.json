@@ -20,13 +20,13 @@
 		"stack": ["Javascript", "SASS", "HTML"]
 	},
 	{
-		"title": "Typing Speed",
-		"subtitle": "typing practice tool",
-		"desc": "Typing speed test designed using Reactstrap along with custom styles. Uses the quotable API.",
-		"shortDesc": "Typing speed test designed using Reactstrap along with custom styles. Uses the quotable API.",
-		"img": "./images/speed-typing.png",
-		"pageLink": "https://bdeering1.github.io/Speed-Typing-App/",
-		"sourceLink": "https://github.com/Bdeering1/Speed-Typing-App",
-		"stack": ["React", "Node", "Bootstrap"]
+		"title": "Old Portfolio",
+		"subtitle": "Web Portfolio",
+		"desc": "My first attempt at a web portfolio. Developed from scratch using SASS and vanilla JS. Includes animations, custom scrolling behaviour, and more.",
+		"shortDesc": "This is what my portfolio used to look like! Check it out!",
+		"img": "./images/old-portfolio.jpeg",
+		"pageLink": "https://bdeering1.github.io/Web-Portfolio/",
+		"sourceLink": "https://github.com/Bdeering1/Web-Portfolio",
+		"stack": ["Javascript", "HTML", "SASS"]
 	}
 ]
