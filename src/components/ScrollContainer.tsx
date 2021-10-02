@@ -21,75 +21,77 @@ export default function ScrollContainer(props: any) {
   function scrollInit() {
     const el = ref.current;
 
-    /* Initialize scrollDestX array */
-    for (let i = 0; i < props.children.length; i++) {
-      setScrollDestX((arr) => [...arr, 0]);
-    }
+    if (el.hasAttribute('data-scrolled')) el.removeAttribute('data-scrolled');
 
-    let scrollPtsY: number[] = []; /* vertical scroll containers */
-    let scrollPtsX: number[][] = []; /* horizontal scroll containers (if any) */
-    for (let i = 0; i < el.children.length; i++) {
-      let section = el.children[i];
-      scrollPtsY[i] = Math.round(section.getBoundingClientRect().top);
-      scrollPtsX[i] = [null];
-      if (section.hasAttribute('data-scroll-x')) {
-        section.style.scrollSnapType = 'none';
-        section.scrollLeft = 0;
-        for (let j = 0; j < section.children.length; j++) {
-          scrollPtsX[i][j] = Math.round(
-            section.children[j].getBoundingClientRect().left
-          );
-        }
-        section.style.scrollSnapType = '';
-        setScrollDestX((arr) => [
-          ...arr.slice(0, i),
-          scrollPtsX[i][0],
-          ...arr.slice(i + 1)
-        ]);
-      }
-    }
+		/* Initialize scrollDestX array */
+		for (let i = 0; i < props.children.length; i++) {
+			setScrollDestX((arr) => [...arr, 0]);
+		}
 
-    /* additional elements are added on either to create 'infinite' scroll effect,
+		let scrollPtsY: number[] = []; /* vertical scroll containers */
+		let scrollPtsX: number[][] = []; /* horizontal scroll containers (if any) */
+		for (let i = 0; i < el.children.length; i++) {
+			let section = el.children[i];
+			scrollPtsY[i] = Math.round(section.getBoundingClientRect().top);
+			scrollPtsX[i] = [null];
+			if (section.hasAttribute('data-scroll-x')) {
+				section.style.scrollSnapType = 'none';
+				section.scrollLeft = 0;
+				for (let j = 0; j < section.children.length; j++) {
+					scrollPtsX[i][j] = Math.round(
+						section.children[j].getBoundingClientRect().left
+					);
+				}
+				section.style.scrollSnapType = '';
+				setScrollDestX((arr) => [
+					...arr.slice(0, i),
+					scrollPtsX[i][0],
+					...arr.slice(i + 1)
+				]);
+			}
+		}
+
+		/* additional elements are added on either to create 'infinite' scroll effect,
              this ensures scrolling starts at the intended first element */
-    //document.getElementById('projects').scrollLeft = scrollPtsX[3][1]; //Safari seems to calculate scroll with margin taken into account
-    setScrollDestX((arr) => [
-      ...arr.slice(0, 3),
-      scrollPtsX[3][1],
-      ...arr.slice(3 + 1)
-    ]);
+		//document.getElementById('projects').scrollLeft = scrollPtsX[3][1]; //Safari seems to calculate scroll with margin taken into account
+		setScrollDestX((arr) => [
+			...arr.slice(0, 3),
+			scrollPtsX[3][1],
+			...arr.slice(3 + 1)
+		]);
 
-    /* Scroll Events
+		/* Scroll Events
             -handles scroll restrictions on load and scroll behaviour fixes
             -triggers on react-spring scrolling
         */
-    el.addEventListener(
-      'scroll',
-      debounce(() => {
-        if (
-          !el.hasAttribute('data-scrolled') &&
-          el.scrollTop >= scrollPtsY[1]
-        ) {
-          document.querySelector<HTMLElement>(
-            '.about-rect'
-          ).style.animationPlayState = 'running';
-          document.querySelector<HTMLElement>(
-            '.socials-wrapper'
-          ).style.animationPlayState = 'running';
+		el.addEventListener(
+			'scroll',
+			debounce(() => {
+				if (
+					!el.hasAttribute('data-scrolled') ||
+					el.scrollTop >= scrollPtsY[1]
+				) {
+					document.querySelector<HTMLElement>(
+						'.about-rect'
+					).style.animationPlayState = 'running';
+					document
+						.querySelectorAll<HTMLElement>('.links-wrapper')[0]
+						.classList.add('fade-in-links');
 
-          pauseScroll('main', 1000);
-          setTimeout(() => {
-            document.querySelector<HTMLElement>('.about-inner').style.opacity =
-              '1';
-          }, 250);
-          el.setAttribute('data-scrolled', '');
-        } else if (el.scrollTop > scrollPtsY[2]) {
-          //pauseScroll('projects', 800);
-        }
-        setBlinkScroll(true);
-        setScrollDestY(el.scrollTop);
-        setBlinkScroll(false);
-      }, 100)
-    );
+					pauseScroll('main', 1000);
+					setTimeout(() => {
+						document.querySelector<HTMLElement>('.about-inner').style.opacity =
+							'1';
+					}, 250);
+					el.setAttribute('data-scrolled', true);
+				} else if (el.scrollTop > scrollPtsY[2]) {
+					//pauseScroll('projects', 800);
+				}
+				setBlinkScroll(true);
+				setScrollDestY(el.scrollTop);
+				setBlinkScroll(false);
+			}, 100)
+		);
 
     /* Arrow Key Events
         -designed to work for any number of sections with horizontal scrolling

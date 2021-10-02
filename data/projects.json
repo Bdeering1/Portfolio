@@ -1,29 +1,32 @@
 [
-    {
-        "title": "Visual Sorting",
-        "subtitle": "algorithm learning tool",
-        "desc": "Modular and scalable design. Utlizes centralized state management through Redux, and takes advantage of aynchronous actions using Redux-Thunk. Includes bubble sort, quick sort, and merge sort.",
-        "shortDesc": "Modular and scalable design. Includes bubble sort, quick sort, and merge sort.",
-        "img": "./images/visual-sorting.png",
-        "link": "https://bdeering1.github.io/Visual-Sorting-App",
-        "stack": ["React", "Redux", "Node", "SASS"]
-    },
-    {
-        "title": "To Do List",
-        "subtitle": "personal organization tool",
-        "desc": "Fully functional note taking app with folders and persistent data through browser cache. Takes advantage of a number of Javascript ES6 features as well as custom CSS elements.",
-        "shortDesc":  "Fully functional note taking app with folders and persistent data through browser cache.",
-        "img": "./images/to-do.png",
-        "link": "https://bdeering1.github.io/To-Do-List/",
-        "stack": ["Javascript", "SASS", "HTML"]
-    },
-    {
-        "title": "Typing Speed",
-        "subtitle": "typing practice tool",
-        "desc": "Typing speed test designed using Reactstrap along with custom styles. Uses the quotable API.",
-        "shortDesc": "Typing speed test designed using Reactstrap along with custom styles. Uses the quotable API.",
-        "img": "./images/speed-typing.png",
-        "link": "https://bdeering1.github.io/Speed-Typing-App/",
-        "stack": ["React", "Node", "Bootstrap"]
-    }
+	{
+		"title": "Visual Sorting",
+		"subtitle": "algorithm learning tool",
+		"desc": "Modular and scalable design. Utlizes centralized state management through Redux, and takes advantage of aynchronous actions using Redux-Thunk. Includes bubble sort, quick sort, and merge sort.",
+		"shortDesc": "Modular and scalable design. Includes bubble sort, quick sort, and merge sort.",
+		"img": "./images/visual-sorting.png",
+		"pageLink": "https://bdeering1.github.io/Visual-Sorting-App",
+		"sourceLink": "https://github.com/Bdeering1/Visual-Sorting-App",
+		"stack": ["React", "Redux", "Node", "SASS"]
+	},
+	{
+		"title": "To Do List",
+		"subtitle": "personal organization tool",
+		"desc": "Fully functional note taking app with folders and persistent data through browser cache. Takes advantage of a number of Javascript ES6 features as well as custom CSS elements.",
+		"shortDesc": "Fully functional note taking app with folders and persistent data through browser cache.",
+		"img": "./images/to-do.png",
+		"pageLink": "https://bdeering1.github.io/To-Do-List/",
+		"sourceLink": "https://github.com/Bdeering1/To-Do-List",
+		"stack": ["Javascript", "SASS", "HTML"]
+	},
+	{
+		"title": "Typing Speed",
+		"subtitle": "typing practice tool",
+		"desc": "Typing speed test designed using Reactstrap along with custom styles. Uses the quotable API.",
+		"shortDesc": "Typing speed test designed using Reactstrap along with custom styles. Uses the quotable API.",
+		"img": "./images/speed-typing.png",
+		"pageLink": "https://bdeering1.github.io/Speed-Typing-App/",
+		"sourceLink": "https://github.com/Bdeering1/Speed-Typing-App",
+		"stack": ["React", "Node", "Bootstrap"]
+	}
 ]
