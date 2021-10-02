@@ -1,5 +1,5 @@
 import React from 'react';
-import JSXLogoFromStr from '../components/LightDarkLogos';
+import JSXLogoFromStr from '../components/LightDarkIcons';
 
 interface StackProps {
     darkMode : boolean

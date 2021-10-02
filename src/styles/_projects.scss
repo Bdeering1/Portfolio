@@ -207,6 +207,10 @@ $card-tilt: -3deg;
             @include card-shadow(-1, $clr-shadow);
         }
     }
+
+    .links-wrapper {
+      right: 10px;
+    }
 }
 
 @media (prefers-color-scheme: dark) {

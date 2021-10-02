@@ -6,16 +6,16 @@ interface LogoProps {
 }
 
 export default function JSXLogoFromStr(
-	logo: string,
+	iconName: string,
 	darkMode: boolean,
 	key?: number,
 	style?: {}
 ) {
-	switch (logo) {
+	switch (iconName) {
 		case 'Website':
-			return <WebsiteLogo darkMode={darkMode} style={style} key={key} />;
+			return <WebsiteIcon darkMode={darkMode} style={style} key={key} />;
 		case 'Code':
-			return <CodeLogo darkMode={darkMode} style={style} key={key} />;
+			return <CodeIcon darkMode={darkMode} style={style} key={key} />;
 		case 'Linkedin':
 			return <LinkedinLogo darkMode={darkMode} style={style} key={key} />;
 		case 'Github':
@@ -41,15 +41,15 @@ export default function JSXLogoFromStr(
 	}
 }
 
-const WebsiteLogo = (props: LogoProps) => (
+const WebsiteIcon = (props: LogoProps) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
 		version='1.0'
-		width='348.000000pt'
-		height='351.000000pt'
+		width='32'
+		height='32'
 		viewBox='0 0 348.000000 351.000000'
 		preserveAspectRatio='xMidYMid meet'
-		className='website-logo logo'
+		className='website-icon icon'
 		style={props.style}
 	>
 		<title>Visit Page</title>
@@ -63,7 +63,7 @@ const WebsiteLogo = (props: LogoProps) => (
 	</svg>
 );
 
-const CodeLogo = (props: LogoProps) => (
+const CodeIcon = (props: LogoProps) => (
 	<svg
 		xmlns='http://www.w3.org/2000/svg'
 		version='1.0'
@@ -71,7 +71,7 @@ const CodeLogo = (props: LogoProps) => (
 		height='32'
 		viewBox='0 0 512.000000 512.000000'
 		preserveAspectRatio='xMidYMid meet'
-		className='code-logo logo'
+		className='code-icon icon'
 		style={props.style}
 	>
 		<title>View Repository</title>
@@ -94,7 +94,7 @@ const LinkedinLogo = (props: LogoProps) => (
 		height='34'
 		viewBox='0 0 34 34'
 		style={props.style}
-		className='linkedin-logo logo'
+		className='linkedin-logo icon'
 	>
 		<g>
 			<path
@@ -112,7 +112,7 @@ const GithubLogo = (props: LogoProps) => (
 		version='1.1'
 		width='32'
 		style={props.style}
-		className='github-logo logo'
+		className='github-logo icon'
 	>
 		<path
 			fill={props.darkMode ? '#F5F5F5' : '#1C5491'}
@@ -130,6 +130,7 @@ const ReactLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>React</title>
 		<g filter='url(#filter0_d)'>
@@ -204,6 +205,7 @@ const SassLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>SASS</title>
 		<g filter='url(#filter2_d)'>
@@ -282,6 +284,7 @@ const ReduxLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>Redux</title>
 		<g filter='url(#filter1_d)'>
@@ -359,6 +362,7 @@ const BootstrapLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>Bootstrap</title>
 		<g filter='url(#filter4_d)'>
@@ -436,6 +440,7 @@ const JavascriptLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>Javascript</title>
 		<g filter='url(#filter3_d)'>
@@ -510,6 +515,7 @@ const NodeLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>NodeJS</title>
 		<g filter='url(#filter6_d)'>
@@ -584,6 +590,7 @@ const CSSLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>CSS3</title>
 		<g filter='url(#filter7_d)'>
@@ -658,6 +665,7 @@ const HTMLLogo = (props: LogoProps) => (
 		fill='none'
 		xmlns='http://www.w3.org/2000/svg'
 		xmlnsXlink='http://www.w3.org/1999/xlink'
+		className='stack-logo'
 	>
 		<title>HTML5</title>
 		<g filter='url(#filter8_d)'>

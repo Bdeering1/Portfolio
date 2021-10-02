@@ -24,14 +24,14 @@
   .title {
     font-size: 64px;
   }
-  .about .socials-wrapper {
+  body .links-wrapper {
     flex-direction: row;
     bottom: 32px;
     right: 32px;
     gap:  16px;
     a {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
     }
   }
   .stack-wrapper {
@@ -41,7 +41,7 @@
     }
   }
   .projects {
-    svg {
+    .stack-logo {
       display: none;
     }
     .project-grid {
