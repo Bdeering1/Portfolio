@@ -101,10 +101,20 @@ export default class ProjectCard extends React.Component<
 					</div>
 				</div>
 				<div className='project-links links-wrapper'>
-					<a href={this.props.project.sourceLink} rel='noopener noreferrer'>
+					<a
+						href={this.props.project.sourceLink}
+						rel='noopener noreferrer'
+						aria-label='Repository Link'
+						tabIndex={this.props.id == 0 || this.props.id == -1 ? -1 : 0}
+					>
 						{JSXLogoFromStr('Code', this.props.darkMode)}
 					</a>
-					<a href={this.props.project.pageLink} rel='noopener noreferrer'>
+					<a
+						href={this.props.project.pageLink}
+						rel='noopener noreferrer'
+						aria-label='Project Page Link'
+						tabIndex={this.props.id == 0 || this.props.id == -1 ? -1 : 0}
+					>
 						{JSXLogoFromStr('Website', this.props.darkMode)}
 					</a>
 				</div>

@@ -96,6 +96,9 @@ section {
     width: 56px;
     height: 56px;
     transition: transform 300ms;
+    &:focus-visible    {
+      outline: 4px outset $clr-primary;
+    }
     &:hover {
       transform: scale(1.1);
     }

@@ -58,6 +58,7 @@ export default function Projects(props: ProjectsProps) {
 		<animated.section
 			className='projects'
 			id='projects'
+			aria-label='projects'
 			onScroll={handleScroll}
 			data-scroll-x={true}
 			scrollLeft={scroll}
@@ -82,7 +83,7 @@ export default function Projects(props: ProjectsProps) {
 				project={projects[0]}
 				mobileView={props.mobileView}
 				darkMode={props.darkMode}
-				id={projects.length + 1}
+				id={-1} /* last element has id of -1 */
 			/>
 		</animated.section>
 	);

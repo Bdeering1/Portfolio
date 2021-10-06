@@ -4,7 +4,7 @@ const about = require('../../data/about.json');
 
 export default function About(props: { darkMode: boolean }) {
 	return (
-		<section className='about' id='about'>
+		<section className='about' id='about' aria-label='about'>
 			<div className='rect about-rect' />
 			<div className='about-inner'>
 				<h1 className='about-title title'>About</h1>
@@ -19,14 +19,16 @@ export default function About(props: { darkMode: boolean }) {
 				<a
 					href='https://www.linkedin.com/in/bryn-deering-172388197/'
 					rel='noopener noreferrer'
-					aria-label='LinkedIn'
+					aria-label='LinkedIn Link'
+					tabIndex={0}
 				>
 					{JSXLogoFromStr('Linkedin', props.darkMode)}
 				</a>
 				<a
 					href='https://github.com/Bdeering1'
 					rel='noopener noreferrer'
-					aria-label='LinkedIn'
+					aria-label='Github Link'
+					tabIndex={0}
 				>
 					{JSXLogoFromStr('Github', props.darkMode)}
 				</a>
