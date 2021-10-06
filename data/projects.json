@@ -21,7 +21,7 @@
 	},
 	{
 		"title": "Old Portfolio",
-		"subtitle": "Web Portfolio",
+		"subtitle": "web projects portfolio",
 		"desc": "My first attempt at a web portfolio. Developed from scratch using SASS and vanilla JS. Includes animations, custom scrolling behaviour, and more.",
 		"shortDesc": "This is what my portfolio used to look like! Check it out!",
 		"img": "./images/old-portfolio.jpeg",

@@ -36,7 +36,7 @@ export default function HTML(props) {
            >
            <img 
               src={'./images/b-logo.svg'} 
-              alt="loading spinner" 
+              alt="loading icon" 
               width="150" 
               height="150"
            />

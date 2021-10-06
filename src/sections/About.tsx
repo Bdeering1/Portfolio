@@ -9,21 +9,27 @@ export default function About(props: { darkMode: boolean }) {
 			<div className='about-inner'>
 				<h1 className='about-title title'>About</h1>
 				<p className='about-desc body-text-lg'>{about.desc}</p>
-				{/*         <div className='stack-callout body-text-lg'>
+				<div className='about-desc-bg' />
+			</div>
+			{/*         <div className='stack-callout body-text-lg'>
           <p className='stack-callout-text'>Check out my stack below!</p>
           <p className='stack-callout-arrow'>v</p>
         </div> */}
-				<div className='social-links links-wrapper'>
-					<a
-						href='https://www.linkedin.com/in/bryn-deering-172388197/'
-						rel='noopener noreferrer'
-					>
-						{JSXLogoFromStr('Linkedin', props.darkMode)}
-					</a>
-					<a href='https://github.com/Bdeering1' rel='noopener noreferrer'>
-						{JSXLogoFromStr('Github', props.darkMode)}
-					</a>
-				</div>
+			<div className='social-links links-wrapper'>
+				<a
+					href='https://www.linkedin.com/in/bryn-deering-172388197/'
+					rel='noopener noreferrer'
+					aria-label='LinkedIn'
+				>
+					{JSXLogoFromStr('Linkedin', props.darkMode)}
+				</a>
+				<a
+					href='https://github.com/Bdeering1'
+					rel='noopener noreferrer'
+					aria-label='LinkedIn'
+				>
+					{JSXLogoFromStr('Github', props.darkMode)}
+				</a>
 			</div>
 		</section>
 	);

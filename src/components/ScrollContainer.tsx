@@ -75,7 +75,7 @@ export default function ScrollContainer(props: any) {
 						'.about-rect'
 					).style.animationPlayState = 'running';
 					document
-						.querySelectorAll<HTMLElement>('.links-wrapper')[0]
+						.querySelector<HTMLElement>('.social-links')
 						.classList.add('fade-in-links');
 
 					pauseScroll('main', 1000);

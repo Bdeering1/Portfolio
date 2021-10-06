@@ -29,10 +29,9 @@ export default function Projects(props: ProjectsProps) {
 
 	useEffect(() => {
 		setScrollX(props.scrollX);
-    document
-      .querySelectorAll<HTMLElement>('.links-wrapper').forEach(el => {
-        el.classList.add('fade-in-links');
-      });
+    document.querySelectorAll<HTMLElement>('.project-links').forEach((el) => {
+			el.classList.add('fade-in-links');
+		});
 	}, [props.scrollX]);
 
 	const handleScroll = debounce((e: any) => {
