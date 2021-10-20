@@ -28,3 +28,12 @@ function wheelOpt() {
 
     return supportsPassive ? { passive: false } : false;
 }
+
+export function animateAbout() {
+	document.querySelector<HTMLElement>('.about-rect').style.animationPlayState = 'running';
+	document.querySelector<HTMLElement>('.social-links').classList.add('fade-in-links');
+
+	setTimeout(() => {
+		document.querySelector<HTMLElement>('.about-inner').style.opacity = '1';
+	}, 250);
+}

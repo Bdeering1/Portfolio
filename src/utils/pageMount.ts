@@ -35,10 +35,10 @@ export default function pageMount(functions: any) {
 	window.addEventListener('resize', updateDimensions);
 	window.addEventListener('orientationchange', updateDimensions);
 	window.onblur = () => {
-		document.title = 'Bryn Deering';
+		document.title = "Bryn's Portfolio";
 	};
 	window.onfocus = () => {
-		document.title = 'Portfolio';
+		document.title = 'Bryn Deering - Portfolio';
 	};
 
 	updateDimensions();

@@ -19,7 +19,7 @@ module.exports = {
 			options: {
 				name: "Bryn's Portfolio",
 				short_name: 'Bryn Deering',
-				description: "Bryn Deering's Portfolio",
+				description: "Bryn Deering's digital portfolio",
 				start_url: './',
 				scope: '.',
 				orientation: 'portrait',
