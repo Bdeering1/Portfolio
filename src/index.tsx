@@ -27,18 +27,20 @@ function IndexPage() {
 					name='description'
 					content='Digital portfolio showcasing a few notable web projects.'
 				/>
+				<meta name='author' content='Bryn Deering' />
 				<meta
 					name='keywords'
 					content='Bryn Deering, Portfolio, Front End Developer, Web Projects'
 				/>
 				<meta property='og:locale' content='en_US' />
 				<meta property='og:type' content='website' />
-				<meta property='og:title' content="Bryn Deering's Portfolio Site" />
+				<meta name='title' property='og:title' content="Bryn Deering's Portfolio Site" />
 				<meta
+					name='description'
 					property='og:description'
 					content='Digital portfolio showcasing a few notable web projects.'
 				/>
-				<meta property='og:image' content='./images/twitter-image.png' />
+				<meta name='image' property='og:image' content='./images/twitter-image.png' />
 				<meta name='twitter:card' content='summary_large_image' />
 				<meta name='twitter:title' content="Bryn Deering's Portfolio Site" />
 				<meta
