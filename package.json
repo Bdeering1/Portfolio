@@ -14,7 +14,7 @@
 		"serve": "gatsby serve",
 		"clean": "gatsby clean",
 		"buildtest": "gatsby clean && gatsby build --prefix-paths && gatsby serve --prefix-paths -o",
-		"deploy": "gatsby build --prefix-paths && gh-pages -d public"
+		"deploy": "gatsby clean && gatsby build --prefix-paths && gh-pages -d public"
 	},
 	"dependencies": {
 		"gatsby": "^3.10.2",

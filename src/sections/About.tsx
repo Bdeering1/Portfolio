@@ -17,7 +17,7 @@ export default function About(props: { darkMode: boolean }) {
         </div> */}
 			<div className='social-links links-wrapper'>
 				<a
-					href='https://www.linkedin.com/in/bryn-deering-172388197/'
+					href='https://www.linkedin.com/in/bryn-deering/'
 					rel='noopener noreferrer'
 					aria-label='LinkedIn Link'
 					tabIndex={0}
