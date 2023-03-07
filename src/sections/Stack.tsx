@@ -5,7 +5,7 @@ interface StackProps {
     darkMode : boolean
 }
 
-const stackArray = ["Typescript", "Node", "Mongo", "Docker", "React", "Redux", "C#", "Blazor", "SASS", "HTML"];
+const stackArray = ["Typescript", "Node", "Mongo", "Docker", "React", "Jest", "Redux", "C#", "Blazor", "SASS", "HTML"];
 
 export default function Stack(props : StackProps) {
     return (

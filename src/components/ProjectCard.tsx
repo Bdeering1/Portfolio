@@ -109,14 +109,16 @@ export default class ProjectCard extends React.Component<
 					>
 						{JSXLogoFromStr('Code', this.props.darkMode)}
 					</a>
-					<a
-						href={this.props.project.pageLink}
-						rel='noopener noreferrer'
-						aria-label='Project Page Link'
-						tabIndex={this.props.id == 0 || this.props.id == -1 ? -1 : 0}
-					>
-						{JSXLogoFromStr('Website', this.props.darkMode)}
-					</a>
+					{this.props.project.pageLink === '' ? null :
+						<a
+							href={this.props.project.pageLink}
+							rel='noopener noreferrer'
+							aria-label='Project Page Link'
+							tabIndex={this.props.id == 0 || this.props.id == -1 ? -1 : 0}
+						>
+							{JSXLogoFromStr('Website', this.props.darkMode)}
+						</a>
+					}
 				</div>
 			</div>
 		);

@@ -1,15 +1,5 @@
 [
 	{
-		"title": "Lucida",
-		"subtitle": "chess engine",
-		"desc": "Fully functional chess engine, developed from scratch using Node. Uses the negamax algorithm with alpha beta pruning - described in detail in github repository.",
-		"shortDesc": "Fully functional chess engine, developed from scratch using Node.",
-		"img": "./images/lucida.png",
-		"pageLink": "",
-		"sourceLink": "https://github.com/Bdeering1/Lucida",
-		"stack": ["Typescript", "Node"]
-	},
-	{
 		"title": "Mandelbrot",
 		"subtitle": "fractal visualization tool",
 		"desc": "Full stack app that allows users to explore the mandelbrot fractal. Renders images with any level of zoom and precision using custom big decimal implementation.",
@@ -18,6 +8,16 @@
 		"pageLink": "",
 		"sourceLink": "https://github.com/Bdeering1/Mandelbrot",
 		"stack": ["C#", "ASP.NET", "Blazor"]
+	},
+	{
+		"title": "Lucida",
+		"subtitle": "chess engine",
+		"desc": "Fully functional chess engine, developed from scratch using Node. Uses an alpha beta search with iterative deepening, described in detail in the repository.",
+		"shortDesc": "Fully functional chess engine, developed from scratch using Node.",
+		"img": "./images/lucida.png",
+		"pageLink": "",
+		"sourceLink": "https://github.com/Bdeering1/Lucida",
+		"stack": ["Typescript", "Node", "Jest"]
 	},
 	{
 		"title": "Visual Sorting",
