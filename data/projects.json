@@ -14,7 +14,7 @@
 		"subtitle": "chess engine",
 		"desc": "Fully functional chess engine, developed from scratch using Node. Uses an alpha beta search with iterative deepening, described in detail in the repository.",
 		"shortDesc": "Fully functional chess engine, developed from scratch using Node.",
-		"img": "./images/lucida.png",
+		"img": "./images/lucida-logos.jpeg",
 		"pageLink": "",
 		"sourceLink": "https://github.com/Bdeering1/Lucida",
 		"stack": ["Typescript", "Node", "Jest"]
