@@ -9,14 +9,14 @@
     height: calc(100% + #{2 * $margin});
     width: 100vw;
     bottom: -$margin;
-    left: 50%;
+    left: -50%;
     animation: aboutSwipe 1000ms forwards paused;
     z-index: 1;
   }
 
   @keyframes aboutSwipe {
     100% {
-      left: -100%;
+      left: 100%;
     }
   }
 }
@@ -37,21 +37,13 @@
   }
   .about-desc {
     margin: 0 10%;
-    color: $clr-light;
-  }
-  .about-desc-bg {
-    grid-row: 1;
-    justify-self: center;
-    position: absolute;
-    height: calc((100% - 40px) / 3);
-    width: 100vw;
-    background-color: $clr-primary;
-    z-index: -1;
+    color: $clr-font-dark;
   }
 
   .stack-callout {
     align-self: start;
     text-align: center;
+    color: $clr-font-dark;
 
     .stack-callout-arrow {
       position: relative;
@@ -80,10 +72,6 @@
   .about-inner {
     .about-desc {
       color: $clr-font-dark;
-    }
-    .about-desc-bg {
-      //background-color: $clr-primary;
-      opacity: 0
     }
     .stack-callout {
       color: $clr-font-dark;

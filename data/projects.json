@@ -24,7 +24,7 @@
 		"subtitle": "algorithm learning tool",
 		"desc": "Modular and scalable design. Utilizes centralized state management through Redux, and takes advantage of aynchronous actions using Redux-Thunk. Includes bubble sort, quick sort, and merge sort.",
 		"shortDesc": "Modular and scalable design. Includes bubble sort, quick sort, and merge sort.",
-		"img": "./images/visual-sorting.png",
+		"img": "./images/visual-sorting-2.png",
 		"pageLink": "https://bdeering1.github.io/Visual-Sorting-App",
 		"sourceLink": "https://github.com/Bdeering1/Visual-Sorting-App",
 		"stack": ["React", "Redux", "Node", "SASS"]

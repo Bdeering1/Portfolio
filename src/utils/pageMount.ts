@@ -25,7 +25,7 @@ export default function pageMount(functions: any) {
 
 	function updateTheme() {
 		functions.setDarkMode(
-			window.matchMedia('(prefers-color-scheme: dark)').matches
+			true //window.matchMedia('(prefers-color-scheme: dark)').matches
 		);
 	}
 

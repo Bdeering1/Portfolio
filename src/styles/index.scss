@@ -40,7 +40,7 @@ p {
 
 html {
     height: var(--inner-height);
-    background-color: #FAFAFA;
+    background-color: $clr-dark;
     scroll-behavior: smooth;
     cursor: url('../../static/images/cursor.svg'), auto;
 }
@@ -79,7 +79,7 @@ section {
     text-align: center;
     font-size: 144px;
     text-shadow: 0 5px 4px $clr-shadow;
-    color: $clr-primary;
+    color: $clr-font-dark;
     letter-spacing: 4px;
     -webkit-text-stroke: 0.15px;
 }
@@ -115,10 +115,4 @@ section {
   100% {
     opacity: 1;
   }
-}
-
-@media (prefers-color-scheme: dark) {
-    html {
-        background-color: $clr-dark;
-    }
 }

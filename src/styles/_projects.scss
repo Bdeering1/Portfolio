@@ -145,7 +145,7 @@ $card-tilt: -3deg;
                 //transform: translateY(5px);
                 font-size: 32px;
                 letter-spacing: 1px;
-                color: $clr-dark;
+                color: $clr-font-light;
                 z-index: 1; //why is this needed??
             }
 
@@ -154,13 +154,13 @@ $card-tilt: -3deg;
                 width: calc(100% + 20px);
                 height: 2px;
                 transform: translate(-10px, 10px);
-                background-color: $clr-dark;
+                background-color: $clr-font-light;
             }
 
             .project-desc {
                 grid-area: 2/2/5/8;
                 align-self: center;
-                color: $clr-dark;
+                color: $clr-font-light;
                 z-index: 1;
             }
         }

@@ -9,7 +9,6 @@ export default function About(props: { darkMode: boolean }) {
 			<div className='about-inner'>
 				<h1 className='about-title title'>About</h1>
 				<p className='about-desc body-text-lg'>{about.desc}</p>
-				<div className='about-desc-bg' />
 			</div>
 			{/*         <div className='stack-callout body-text-lg'>
           <p className='stack-callout-text'>Check out my stack below!</p>
