@@ -4,7 +4,7 @@
 		"subtitle": "command line utility",
 		"desc": "Lightweight command line utility for removing dependencies and build artifacts from unused local projects.",
 		"shortDesc": "Lightweight command line utility for removing dependencies and build artifacts from unused local projects.",
-		"img": "./images/visual-sorting-2.png",
+		"img": "./images/polykill.png",
 		"pageLink": "https://crates.io/crates/polykill",
 		"sourceLink": "https://github.com/Bdeering1/polykill",
 		"stack": ["Rust"]
