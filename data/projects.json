@@ -1,5 +1,15 @@
 [
 	{
+		"title": "Polykill",
+		"subtitle": "command line utility",
+		"desc": "Lightweight command line utility for removing dependencies and build artifacts from unused local projects.",
+		"shortDesc": "Lightweight command line utility for removing dependencies and build artifacts from unused local projects.",
+		"img": "./images/visual-sorting-2.png",
+		"pageLink": "https://crates.io/crates/polykill",
+		"sourceLink": "https://github.com/Bdeering1/polykill",
+		"stack": ["Rust"]
+	},
+	{
 		"title": "Mandelbrot",
 		"subtitle": "fractal visualization tool",
 		"desc": "Full stack app that allows users to explore the mandelbrot fractal. Renders images with any level of zoom and precision using custom big decimal implementation.",
@@ -10,16 +20,6 @@
 		"stack": ["C#", "ASP.NET", "Blazor"]
 	},
 	{
-		"title": "Lucida",
-		"subtitle": "chess engine",
-		"desc": "Fully functional chess engine, developed from scratch using Node. Uses an alpha beta search with iterative deepening, described in detail in the repository.",
-		"shortDesc": "Fully functional chess engine, developed from scratch using Node.",
-		"img": "./images/lucida-logos.jpeg",
-		"pageLink": "",
-		"sourceLink": "https://github.com/Bdeering1/Lucida",
-		"stack": ["Typescript", "Node", "Jest"]
-	},
-	{
 		"title": "Visual Sorting",
 		"subtitle": "algorithm learning tool",
 		"desc": "Modular and scalable design. Utilizes centralized state management through Redux, and takes advantage of aynchronous actions using Redux-Thunk. Includes bubble sort, quick sort, and merge sort.",
@@ -28,5 +28,15 @@
 		"pageLink": "https://bdeering1.github.io/Visual-Sorting-App",
 		"sourceLink": "https://github.com/Bdeering1/Visual-Sorting-App",
 		"stack": ["React", "Redux", "Node", "SASS"]
+	},
+	{
+		"title": "Lucida",
+		"subtitle": "chess engine",
+		"desc": "Fully functional chess engine, developed from scratch using Node. Uses an alpha beta search with iterative deepening, described in detail in the repository.",
+		"shortDesc": "Fully functional chess engine, developed from scratch using Node.",
+		"img": "./images/lucida-logos.jpeg",
+		"pageLink": "",
+		"sourceLink": "https://github.com/Bdeering1/Lucida",
+		"stack": ["Typescript", "Node", "Jest"]
 	}
 ]
