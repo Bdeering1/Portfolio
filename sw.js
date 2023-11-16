@@ -27,35 +27,21 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-5ca6aaf1e40330efc1ba.js"
+    "url": "webpack-runtime-81617a6b626737796c82.js"
   },
   {
-    "url": "framework-5725c443093262ef7b3d.js"
+    "url": "framework-be18fefa4aeab7200983.js"
   },
   {
-    "url": "app-7d67d0f4aa8ec10e5789.js"
+    "url": "app-a3d9ae5bc5b46577f8a2.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "27d1dc18ba34509cf10348ae0abb14b4"
-  },
-  {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-a479cdefc22584a07537.js"
-  },
-  {
-    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
-    "revision": "f2c002077289a7e1ac538802bc7f5314"
-  },
-  {
-    "url": "page-data/app-data.json",
-    "revision": "85361b4c9d4a5d80b2f39796d1cbe10e"
-  },
-  {
-    "url": "polyfill-448dc9d352158c933e97.js"
+    "revision": "32e4b470b5824d5f23277f12067008ff"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "6a74e3c7a2995301f648519c4f2948e4"
+    "revision": "4abe4e8c43264a3be00f4145b095c85c"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -81,6 +67,24 @@ const MessageAPI = {
 
   clearPathResources: event => {
     event.waitUntil(idbKeyval.clear())
+
+    // We detected compilation hash mismatch
+    // we should clear runtime cache as data
+    // files might be out of sync and we should
+    // do fresh fetches for them
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (key && key.includes(`runtime`)) {
+              return caches.delete(key)
+            }
+
+            return Promise.resolve()
+          })
+        )
+      })
+    )
   },
 
   enableOfflineShell: () => {
@@ -147,7 +151,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/Portfolio/app-7d67d0f4aa8ec10e5789.js`))) {
+  if (!resources || !(await caches.match(`/Portfolio/app-a3d9ae5bc5b46577f8a2.js`))) {
     return await fetch(event.request)
   }
 
